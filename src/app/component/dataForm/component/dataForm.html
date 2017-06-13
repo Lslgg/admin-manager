@@ -1,0 +1,13 @@
+<div class="data-form">
+    <form [formGroup]="formInfo" class="form-horizontal" 
+        (ngSubmit)="onSubmit()" #formItem>
+        <ng-content select="form-item"></ng-content>
+        <ng-content select="form-group"></ng-content>
+        <div class="form-group">
+            <div class="col-md-12">
+                <button  [disabled]="!formInfo.valid" type="submit" class="btn btn-success">保存</button> &nbsp;
+                <button type="reset" (click)="revert()" class="btn btn-danger">重置</button>
+            </div>
+        </div>
+    </form>
+</div>

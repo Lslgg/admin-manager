@@ -1,0 +1,30 @@
+<div class="table">
+    
+    <ng-container *ngIf="isSearch">
+        <div class="card card-accent-info showOrhideCard">
+            <div class="card-header">
+                <strong>高级查找</strong>
+            </div>
+            <div class="card-block">
+                <form action="" class="form-horizontal " method="post">
+                    <div class="form-group row" #tableSearch>
+                        <ng-content select="search-item"></ng-content>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary" type="button" (click)="search()">
+                    <i class="fa fa-dot-circle-o"></i>查找
+                </button>
+                        <button class="btn btn-sm btn-danger" type="reset">
+                    <i class="fa fa-dot-circle-o"></i> 重置 
+                </button>
+            </div>
+        </div>
+    </ng-container>
+
+    <table class="table table-bordered table-hover">
+        <ng-content select="thead"></ng-content>
+        <ng-content select="tbody"></ng-content>
+    </table>
+</div>

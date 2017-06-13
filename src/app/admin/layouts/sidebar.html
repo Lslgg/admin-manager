@@ -1,0 +1,37 @@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/index']">
+                    <i class="icon-speedometer"></i> 首页 </a>
+            </li>
+            <ng-container *ngFor="let menu of navMenuList">
+                <li class="divider"></li>
+                <li class="nav-title">
+                    {{menu.title}}
+                </li>
+                <ng-container *ngFor="let subMenu of menu.subNavMenuList">
+                    <ng-container *ngIf="subMenu.subNavMenuList.length!=0">
+                        <li class="nav-item nav-dropdown" routerLinkActive="open">
+                            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>{{subMenu.title}}</a>
+                            <ul class="nav-dropdown-items">
+                                <ng-container *ngFor="let subSubMenu of subMenu.subNavMenuList">
+                                    <li class="nav-item">
+                                        <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subSubMenu.url}}">
+                                            <i class="icon-star"></i>{{subSubMenu.title}}</a>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </li>
+                    </ng-container>
+                    <ng-container *ngIf="subMenu.subNavMenuList==0">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subMenu.url}}">
+                                <i class="icon-calculator"></i> {{subMenu.title}} </a>
+                        </li>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </ul>
+    </nav>
+</div>

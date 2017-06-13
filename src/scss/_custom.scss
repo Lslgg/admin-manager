@@ -1,0 +1,14 @@
+// Here you can add other styles
+.table th, .table td {
+    padding: 0.35rem;
+}
+
+.hiden{
+    display:none;
+}
+
+@media (max-width: 768px) { 
+    .navbar-brand2{
+        margin-left:30px;
+    }
+ }

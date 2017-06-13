@@ -1,0 +1,19 @@
+<ul class="pagination">
+    <ng-container *ngFor="let item of PagiationStrList; let i=index">
+        <ng-container [ngSwitch]="i">
+            <ng-container *ngSwitchCase="0">
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" (click)="getPage(1)">首页</a>
+                </li>
+            </ng-container>
+            <li class="page-item">
+                <a class="page-link" href="javascript:;" (click)="getPage(item)">{{item}}</a>
+            </li>
+            <ng-container *ngSwitchCase="(LastNumber-1)">
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" (click)="getPage(LastPage)">未页</a>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ul>

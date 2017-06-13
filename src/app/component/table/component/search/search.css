@@ -1,0 +1,8 @@
+.form-control-label,.form-control{
+    display: inline;
+}
+
+
+.form-control{
+    width:80%
+}

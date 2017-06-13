@@ -1,0 +1,7 @@
+<div class="form-group" [formGroup]="formInfo">
+    <label for="username" class="col-md-2 control-label" >{{title}}</label>
+    <div class="col-md-10">
+        <input type="text" class="form-control" formControlName="{{name}}">
+        <ng-content select="form-validator"></ng-content>
+    </div>
+</div>

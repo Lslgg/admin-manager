@@ -1,0 +1,15 @@
+<template-panel-form>
+    <div plane-body>
+        <data-form [formInfo]="userForm">
+            <form-item [name]="'username'" [title]="'姓名'" [type]="'text'" [formInfo]="userForm">
+                <form-validator [name]="'username'" [type]="'required'" [title]="'请输入姓名'" [formInfo]="userForm"></form-validator>
+                <form-validator [name]="'username'" [type]="'minLength'" [value]="6" [title]="'最少6个字符'" [formInfo]="userForm"></form-validator>
+                <form-validator [name]="'username'" [type]="'maxLength'" [value]="12" [title]="'最多12个字符'" [formInfo]="userForm"></form-validator>
+            </form-item>
+            <form-item [name]="'email'" [title]="'邮箱'" [type]="'text'" [formInfo]="userForm">
+                <form-validator [name]="'email'" [type]="'required'" [title]="'请输入邮箱地址'" [formInfo]="userForm"></form-validator>
+                <form-validator [name]="'email'" [type]="'email'" [title]="'请输入正确邮箱地址'" [formInfo]="userForm"></form-validator>
+            </form-item>
+        </data-form>
+    </div>
+</template-panel-form>

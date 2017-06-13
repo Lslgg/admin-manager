@@ -1,0 +1,23 @@
+<ng-container *ngIf="type=='required'">
+    <div *ngIf="formInfo.get(name).hasError('required') && (formInfo.get(name).touched)" class="alert alert-danger">
+        {{title}}
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type=='minLength'">
+    <div *ngIf="formInfo.controls[name].errors?.minlength" class="alert alert-danger">
+        {{title}}
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type=='maxLength'">
+    <div *ngIf="formInfo.controls[name].errors?.maxlength" class="alert alert-danger">
+        {{title}}
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type=='email'">
+    <div *ngIf="formInfo.controls[name].errors?.email  && (formInfo.get(name).touched)" class="alert alert-danger">
+        {{title}}
+    </div>
+</ng-container>

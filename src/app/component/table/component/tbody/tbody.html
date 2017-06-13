@@ -1,0 +1,46 @@
+<tr *ngFor="let item of dataList let i=index">
+    <ng-container *ngFor="let row of rowNameList">
+        <ng-container [ngSwitch]="row.type">
+
+            <ng-container *ngSwitchCase="'checkbox'">
+                <td><input type="checkbox" /></td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'#'">
+                <td>{{ i+1 }}</td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'operation'">
+                <td class="operation">
+                    <ng-container *ngFor="let info of operationList">
+                        <ng-container [ngSwitch]="info">
+                            <ng-container *ngSwitchCase="'修改'">
+                                <a href="javascript:;" (click)="update(item[key])">{{info}}</a>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'删除'">
+                                <a href="javascript:;" (click)="delInfo(item[key])">{{info}}</a>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'启用'">
+                                <a href="javascript:;" (click)="isValue(item[key])">{{info}}</a>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+                <td [attr.colspan]="row.columnSpan" [title]="item[row.name]" [id]="item[key]" [field]="row.name" [colType]="row.type" 
+                    (onEventList)="eventList($event)"
+                    tbody-td></td>
+            </ng-container>
+
+        </ng-container>
+    </ng-container>
+</tr>
+<tr>
+    <td [attr.colspan]="pagiztionColSpan" >
+        <pagiation [pageCount]="pageCount" [pageSize]="pageSize" 
+            (ongetPage)="ongetPage($event)">
+        </pagiation>
+    </td>
+</tr>

@@ -1,0 +1,9 @@
+<ng-container [ngSwitch]="colType">
+    <ng-container *ngSwitchCase="'link'">
+        <a href="javascript:;" (click)="eventList(id,field)">{{title}}</a>
+    </ng-container>
+    <ng-container *ngSwitchCase="'image'">
+        <img src="/images/img.jpg" />
+    </ng-container>
+    <ng-container *ngSwitchDefault>{{ title }}</ng-container>
+</ng-container>
