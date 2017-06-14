@@ -43,7 +43,7 @@ export class TbodyComponent implements OnInit {
 
     pageCount:number;
 
-    pageSize: number = 2;
+    pageSize: number = 10;
 
     moduleName: string = "";
 
@@ -77,7 +77,6 @@ export class TbodyComponent implements OnInit {
             this.dataList=this.dataList.filter(val=> val["id"]!=id);
             this.pageCount=this.pageCount-1;
             if(this.IsOnDelete) return;
-                  
         }
     }
 
@@ -95,7 +94,6 @@ export class TbodyComponent implements OnInit {
     eventList(info: object) {
         this.onEventList.emit(info);
         if(this.IsOnEventList) return;
-        
     }
 
 }

@@ -1,0 +1,24 @@
+<div class="form-group" [formGroup]="formInfo">
+    <ng-container *ngIf="type=='checkbox'">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="checkbox" formControlName="{{name}}">{{title}}
+        </div>
+    </ng-container>
+    <ng-container *ngIf="type!='checkbox'">
+        <label for="{{name}}" class="col-md-2 control-label" >{{title}}</label>
+        <div class="col-md-10">
+            <ng-container *ngIf="type=='text'">
+                <input type="text" class="form-control" formControlName="{{name}}">
+            </ng-container>
+
+            <ng-container *ngIf="type=='email'">
+                <input type="email" class="form-control" formControlName="{{name}}">
+            </ng-container>
+
+            <ng-container *ngIf="type=='password'">
+                <input type="password" class="form-control" formControlName="{{name}}">
+            </ng-container>
+            <ng-content select="form-validator"></ng-content>
+        </div>
+    </ng-container>
+</div>

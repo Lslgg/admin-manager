@@ -1,0 +1,18 @@
+<template-panel-table [Title]="'角色管理列表'" (onAdd)="onAdd($event)">
+    <data-table [modlueName]="'Role'" [isSearch]="true" plane-body>
+        
+        <search-item [name]="'roleName'" [title]="'角色名'" 
+            [type]="'text'" [condition]="'='" class="col-md-12"></search-item>
+
+        <thead>
+            <th name="roleName" type="link">角色名</th>
+            <th name="name">标识</th>
+            <th name="#" type="operation">操作</th>
+        </thead>
+
+        <tbody operation="删除" 
+            (onDelete)="onDelete($event)" [IsOnDelete]="true"
+            (onEventList)="onEventList($event)" [IsOnEventList]="true"></tbody>
+
+    </data-table>
+</template-panel-table> 

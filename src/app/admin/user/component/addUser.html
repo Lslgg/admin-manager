@@ -1,15 +1,24 @@
 <template-panel-form>
     <div plane-body>
         <data-form [formInfo]="userForm">
-            <form-item [name]="'username'" [title]="'姓名'" [type]="'text'" [formInfo]="userForm">
-                <form-validator [name]="'username'" [type]="'required'" [title]="'请输入姓名'" [formInfo]="userForm"></form-validator>
-                <form-validator [name]="'username'" [type]="'minLength'" [value]="6" [title]="'最少6个字符'" [formInfo]="userForm"></form-validator>
-                <form-validator [name]="'username'" [type]="'maxLength'" [value]="12" [title]="'最多12个字符'" [formInfo]="userForm"></form-validator>
+            <form-item [name]="'username'" [title]="'姓名'" [type]="'text'">
+                <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="5" [title]="'最少5个字符'"></form-validator>
+                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
             </form-item>
-            <form-item [name]="'email'" [title]="'邮箱'" [type]="'text'" [formInfo]="userForm">
-                <form-validator [name]="'email'" [type]="'required'" [title]="'请输入邮箱地址'" [formInfo]="userForm"></form-validator>
-                <form-validator [name]="'email'" [type]="'email'" [title]="'请输入正确邮箱地址'" [formInfo]="userForm"></form-validator>
+            <form-item [name]="'email'" [title]="'邮箱'" [type]="'email'">
+                <form-validator [type]="'required'" [title]="'请输入邮箱地址'" ></form-validator>
+                <form-validator [type]="'email'" [title]="'请输入正确邮箱地址'"></form-validator>
             </form-item>
+            <form-group [formInfo]="userForm" [name]="'pwdList'">
+                 <form-item [name]="'password'" [title]="'密码'" [type]="'password'" [formInfo]="userForm.controls.pwdList">
+                     <form-validator [type]="'required'" [title]="'请输入密码'"></form-validator>
+                     <form-validator [type]="'minLength'" [value]="6" [title]="'最少6个字符'"></form-validator>
+                 </form-item>
+                 <form-item [name]="'passwordConfirm'" [title]="'确认密码'" [type]="'password'" [formInfo]="userForm.controls.pwdList">
+                     <form-validator [type]="'mismatch'" [title]="'请输入相同的密码！'"></form-validator>
+                 </form-item>
+            </form-group>
         </data-form>
     </div>
 </template-panel-form>

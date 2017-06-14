@@ -64,7 +64,7 @@ export class ParserManager implements ParserServer {
     /*
     * 根据ID查找
     */
-    public getInfo<T>(id: string, tableName: StringObject, tClass?: Tclass<T>): Promise<T> {
+    public getInfo<T>(id: string, tableName: string, tClass?: Tclass<T>): Promise<T> {
         var query = this.setQuery(tableName);
         let promise = new Promise<any>((resolve, reject) => {
             query.get(id, {
@@ -96,8 +96,8 @@ export class ParserManager implements ParserServer {
 
         var query = this.setQuery(pageInfo.name);
         let promise = new Promise<{ list: Array<T>, count: number }>((resolve, reject) => {
-            query=this.setCondition(query,pageInfo.coditions);
-            query=this.setOrder(query,pageInfo.orders);
+            query = this.setCondition(query, pageInfo.coditions);
+            query = this.setOrder(query, pageInfo.orders);
             query.count({ //查找总数
                 success: (count: number) => {
                     query.skip((pageInfo.index - 1) * pageInfo.size);
@@ -122,50 +122,50 @@ export class ParserManager implements ParserServer {
      * @param query 查询对象
      * @param conditionList 要过滤的条件
      */
-    private setCondition(query:any,conditionList:ConditionList){
-        let mapList=this.conditionStr();
+    private setCondition(query: any, conditionList: ConditionList) {
+        let mapList = this.conditionStr();
         conditionList.forEach(info => {
-            if(info.value!=""){
-                let condition=mapList.get(info.condition);
-                query[condition](info.field,info.value)
+            if (info.value != "") {
+                let condition = mapList.get(info.condition);
+                query[condition](info.field, info.value)
             }
         });
 
         return query;
     }
-    
+
     /**
      * 设置排序
      * @param query 设置排序
      * @param orders 排序的字段
      */
-    private setOrder(query:any,orders:OrderList){
-        orders.forEach(info=>{
-            if(info.orderType=="desc"){
-                 query.descending(info.field)
-            }else{
+    private setOrder(query: any, orders: OrderList) {
+        orders.forEach(info => {
+            if (info.orderType == "desc") {
+                query.descending(info.field)
+            } else {
                 query.ascending(info.field)
             }
         })
-        if(orders.length<=0){
+        if (orders.length <= 0) {
             query.descending('createdAt');
         }
         return query;
     }
 
-    private conditionStr():Map<string,string>{
-        var list:Map<string,string>=new Map<string,string>();
-            list.set("=","equalTo");
-            list.set("!=","notEqualTo");
-            list.set("<","lessThan");
-            list.set("<=","lessThanOrEqualTo");
-            list.set(">","greaterThan");
-            list.set(">=","greaterThanOrEqualTo");
-            list.set("in","containedIn");
-            list.set("notIn","notContainedIn");
-            list.set("exists","exits");
-            list.set("notExits","doesNotExist");
-            list.set("like","startsWith");
+    private conditionStr(): Map<string, string> {
+        var list: Map<string, string> = new Map<string, string>();
+        list.set("=", "equalTo");
+        list.set("!=", "notEqualTo");
+        list.set("<", "lessThan");
+        list.set("<=", "lessThanOrEqualTo");
+        list.set(">", "greaterThan");
+        list.set(">=", "greaterThanOrEqualTo");
+        list.set("in", "containedIn");
+        list.set("notIn", "notContainedIn");
+        list.set("exists", "exits");
+        list.set("notExits", "doesNotExist");
+        list.set("like", "startsWith");
         return list;
     }
 
@@ -189,9 +189,9 @@ export class ParserManager implements ParserServer {
     /*
     * 查找总数
     */
-    getCount(tableName: StringObject, conditionList: ConditionList): Promise<number> {
+    getCount(tableName: string, conditionList: ConditionList): Promise<number> {
         var query = this.setQuery(tableName);
-        query=this.setCondition(query,conditionList);
+        query = this.setCondition(query, conditionList);
 
         let promise = new Promise<number>((resolve, reject) => {
             query.count({
@@ -231,16 +231,17 @@ export class ParserManager implements ParserServer {
         var dbInfo = new DBInfo();
         return dbInfo;
     }
-    
+
     /**    
      * 设置 parse 查询对象
      */
-    public setQuery(tableName: StringObject): any {
+    public setQuery(tableName: string): any {
         var query: any;
-        if (typeof tableName == "string") {
-            let table = this.Parse.Object.extend(tableName);
-            query = new this.Parse.Query(table);
-        } else {
+        if (tableName == "User") {
+            query = new this.Parse.Query(this.Parse.User);
+        } else if (tableName == "Role") {
+            query = new this.Parse.Query(this.Parse.Role);
+        }else{
             query = new this.Parse.Query(tableName);
         }
         return query;

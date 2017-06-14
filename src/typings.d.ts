@@ -6,8 +6,6 @@ declare var System: any;
 
 declare var Parse: any;
 
-type StringObject = string | {};
-
 type Tclass<T>={ new (): T };
 
 type ConditionList=Array<{ field: string, value: string, condition: string }>
@@ -20,7 +18,7 @@ type OrderList=Array<{field:string,orderType:string}>;
 interface Pages{
     index: number,
     size: number,
-    name: StringObject,
+    name: string,
     orders:OrderList,
     coditions:ConditionList,
 }
@@ -70,7 +68,7 @@ interface ParserServer {
      * @param tClass 实例对象可选参数
      * @return 实例对象
      */
-    getInfo<T>(id: string, tablename: StringObject, tClass?: Tclass<T>): Promise<T>;
+    getInfo<T>(id: string, tablename: string, tClass?: Tclass<T>): Promise<T>;
 
      /**
      * 分页查找
@@ -86,7 +84,7 @@ interface ParserServer {
      * @param conditionList 条件
      * @return 总数     
      */
-    getCount(tableName: StringObject,conditionList:ConditionList): Promise<number>;
+    getCount(tableName: string,conditionList:ConditionList): Promise<number>;
 
     /**
      * 条件查找
@@ -113,7 +111,7 @@ interface ParserServer {
      * @param tableName 集合名字 
      * @return parse 对象
      */
-    setParseObj(tableName: StringObject): any;
+    setParseObj(tableName: string): any;
 }
 
 

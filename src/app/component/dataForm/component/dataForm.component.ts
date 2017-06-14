@@ -1,9 +1,11 @@
 import {
-    Component, OnInit, Input, ViewChildren, ContentChild,
-    ElementRef, AfterViewInit, Output, EventEmitter, ViewChild
+    Component, OnInit, Input, EventEmitter,
+    AfterViewInit, Output, ContentChildren, QueryList
 } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { FormItemComponent } from './formItem/formItem.component';
 
 @Component({
     selector: 'data-form',
@@ -12,35 +14,33 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class DataFormComponent implements OnInit {
 
-    // @ViewChild('formItem') formViewChild: ElementRef;
-
     @Input() formInfo: FormGroup;
 
+    @Input() formContent: any;
+
+    @Input() isOnSubmit: boolean = false;
+    @Output() onSubmit = new EventEmitter<any>();
+
     formList: Array<{ name: string, title: string, formType: string }> = [];
+
+    @ContentChildren(FormItemComponent) formItemList: QueryList<FormItemComponent>;
 
     constructor(private fb: FormBuilder) {
 
     }
 
     ngOnInit() {
-        // console.log(this.formInfo);
     }
 
-    ngAfterViewInit() {
-        // var list = this.formViewChild.nativeElement.querySelectorAll("form-item");
-        // for (var index = 0; index < list.length; index++) {
-        //     let self=list[index];
-        //     let name = self.getAttribute("name");
-        //     let title = self.getAttribute("title");
-        //     let formType = self.getAttribute("formType");
-        //     let valList=self.querySelectorAll("form-validator");
-        //     this.formList.push({ name, title, formType });
-        // }
-
+    ngAfterContentInit() {
+        this.formItemList.forEach(element => {
+            element.formInfo = this.formInfo;
+            element.ngAfterContentInit();
+        });
     }
 
-    onSubmit() {
-       console.log(this.formInfo.value);
+    submit() {
+        this.onSubmit.emit(this.formInfo.value);
     }
 
 }

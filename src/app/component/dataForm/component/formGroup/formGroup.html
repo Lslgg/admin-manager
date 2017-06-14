@@ -1,3 +1,5 @@
 <div [formGroup]="formInfo">
-     <ng-content select="form-item"></ng-content>
+    <div class="list" formGroupName="{{name}}">
+        <ng-content select="form-item"></ng-content>
+    </div>
 </div>

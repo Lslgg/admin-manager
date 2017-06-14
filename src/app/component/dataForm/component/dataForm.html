@@ -1,6 +1,5 @@
 <div class="data-form">
-    <form [formGroup]="formInfo" class="form-horizontal" 
-        (ngSubmit)="onSubmit()" #formItem>
+    <form [formGroup]="formInfo" class="form-horizontal" (ngSubmit)="submit()">
         <ng-content select="form-item"></ng-content>
         <ng-content select="form-group"></ng-content>
         <div class="form-group">
