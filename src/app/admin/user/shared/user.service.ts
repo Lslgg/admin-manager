@@ -1,27 +1,33 @@
 import { Injectable, Inject } from '@angular/core';
-import { User,CardLog } from './user'
+import { User, CardLog } from './user.modle'
 
 @Injectable()
 export class UserService {
 
     Parse: ParserServer;
 
-    constructor(@Inject("parseManager") parse) {
+    constructor( @Inject("parseManager") parse) {
         this.Parse = parse;
     }
 
     addUser(user: User): Promise<boolean> {
         let parseUser = this.setUser(user);
         let promise = new Promise<boolean>((resolve, reject) => {
-            parseUser.save(null, {
+            //保存用户 {useMasterKey: true}
+            parseUser.save(null,{
                 success: (userInfo) => {
-                    this.getRoleInfo(user.roleId).then(val => {
-                        val.getUsers().add(userInfo);
-                        val.save();
+                    //根据用户角色id保存用户角色关系
+                    console.log(userInfo);
+                    this.getRoleInfo(user.roleId).then(role => {
+                        role.getUsers().add(userInfo);
+                        role.save();
                         resolve(true);
-                    })
+                    });
                 },
-                error: (user, error) => { reject(false); }
+                error: (user, error) => {
+                    console.log(error);
+                    reject(false);
+                }
             });
         });
         return promise;
@@ -29,32 +35,32 @@ export class UserService {
 
     updateUser(user: User, oldRoleId: string): Promise<boolean> {
         let promise = new Promise<boolean>((resolve, reject) => {
-            this.Parse.Parse.Cloud.run('updateUser',
-                {
-                    objectId: user.id,
-                    username: user.username,
-                    roleId: user.roleId,
-                    isValid: user.isValid
-                }
-            ).then((result) => {
+            let info = {
+                objectId: user.id,
+                username: user.username,
+                roleId: user.roleId,
+                isValid: user.isValid
+            };
+            this.Parse.Parse.Cloud.run('updateUser', info).then((result) => {
                 if (user.roleId == oldRoleId) {
                     resolve(true);
-                } else {
-                    this.getUserPrimary(user.id).then(userInfo => {
-                        let roleId = userInfo["attributes"]["roleId"];
-                        this.getRoleInfo(roleId).then(val => {//添加新的角色
-                            val.getUsers().add(userInfo);
-                            val.save();
-                            this.getUserPrimary(user.id).then(odlUserInfo => {//删除旧的角色
-                                this.getRoleInfo(oldRoleId).then(oldVal => {
-                                    oldVal.getUsers().remove(odlUserInfo);
-                                    oldVal.save();
-                                    resolve(true);
-                                })
+                    return;
+                }
+                //修改用户角色关系
+                this.getUserPrimary(user.id).then(userInfo => {
+                    let roleId = userInfo["attributes"]["roleId"];
+                    this.getRoleInfo(roleId).then(val => {//添加新的角色
+                        val.getUsers().add(userInfo);
+                        val.save();
+                        this.getUserPrimary(user.id).then(odlUserInfo => {//删除旧的角色
+                            this.getRoleInfo(oldRoleId).then(oldVal => {
+                                oldVal.getUsers().remove(odlUserInfo);
+                                oldVal.save();
+                                resolve(true);
                             })
                         })
-                    });
-                }
+                    })
+                });
 
             })
         });
@@ -97,13 +103,11 @@ export class UserService {
                     .then((result) => { resolve(result); });
             }
 
-            
-
             // admin 不用写减少房卡日志
             if (username == "admin") {
                 reject(true);
             } else {
-              
+
             }
 
         });
@@ -176,6 +180,12 @@ export class UserService {
         return promise;
     }
 
+    getRoleList(): Promise<Array<{ id: string, roleName: string }>> {
+        var query = this.Parse.setQuery("Role");
+        let promise = this.Parse.getList<{ id: string, roleName: string }>(query);
+        return promise;
+    }
+
     /**
      * 查找返回原数据库对象
      */
@@ -203,7 +213,6 @@ export class UserService {
 
     private setUser(userInfo: User) {
         var user = new this.Parse.Parse.User();
-        user.set("id", userInfo.id);
         user.set("username", userInfo.username);
         user.set("password", userInfo.passWord);
         user.set("roleId", userInfo.roleId);

@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
 
     @Input() condition:string='=';
 
-    @Input() dataList:Array<{key:string,val:string}>=[];
+    @Input() dataList:Array<{key:string,value:string}>=[];
 
     constructor() {
 

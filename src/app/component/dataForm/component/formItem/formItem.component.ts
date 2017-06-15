@@ -25,6 +25,8 @@ export class FormItemComponent implements OnInit {
     
     @Input() formContent: any;
 
+    @Input() dataList:Array<{key:string,value:string}>=[];
+
     @ContentChildren(ValidatorComponent) validatorList: QueryList<ValidatorComponent>;
 
     constructor() {

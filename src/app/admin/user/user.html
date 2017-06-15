@@ -4,8 +4,7 @@
         <search-item [name]="'username'" [title]="'用户名'" 
             [type]="'text'" [condition]="'='" class="col-md-6"></search-item>
         <search-item [name]="'roleId'" [title]="'角色名'" 
-            [dataList]="[{key:'',val:'全部'},{key:'UspgGjKPfT',val:'管理员'},{key:'zE8w9MML9o',val:'代理'}]"
-            [type]="'select'" [condition]="'='" class="col-md-6"></search-item>
+            [dataList]="roleList" [type]="'select'" [condition]="'='" class="col-md-6"></search-item>
 
         <thead>
             <th name="username" type="link">用户名</th>
@@ -13,7 +12,8 @@
             <th name="#" type="operation">操作</th>
         </thead>
 
-        <tbody operation="删除" (onDelete)="onDelete($event)" [IsOnDelete]="true"></tbody>
+        <tbody operation="删除" (onDelete)="onDelete($event)" [IsOnDelete]="true"
+            (onEventList)="onEventList($event)" [IsOnEventList]="true"></tbody>
 
     </data-table>
 </template-panel-table> 

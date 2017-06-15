@@ -22,8 +22,11 @@ export class RoleComponent implements OnInit {
             success => alert("删除成功!"));
     }
 
-    onEventList(info:object){
-        let id=info["id"];
-        this.router.navigate(['../admin/addRole', id]);
+    onEventList(info: object) {
+        let id = info["id"];
+        let type = info["type"];
+        if (type == "roleName") {
+            this.router.navigate(['../admin/addRole', id]);
+        }
     }
 }

@@ -10,9 +10,16 @@ import { User, UserService } from './shared/';
 
 export class UserComponent implements OnInit {
 
+    roleList:Array<{}>=[];
+    
     constructor(private router: Router,
         private userService: UserService) {
-
+        //用户角色列表项
+        this.userService.getRoleList().then(list => {
+            list.forEach(val => {
+                this.roleList.push({ key: val.id, value: val.roleName });
+            })
+        });
     }
 
     ngOnInit() { }
@@ -24,5 +31,13 @@ export class UserComponent implements OnInit {
 
     onAdd(){
         this.router.navigate(['../admin/addUser']);
+    }
+
+    onEventList(info:object){
+        let id=info["id"];
+        let type=info["type"];
+        if(type=="username"){
+            this.router.navigate(['../admin/addUser', id]);
+        }
     }
 }

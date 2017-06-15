@@ -16,8 +16,6 @@ export class DataFormComponent implements OnInit {
 
     @Input() formInfo: FormGroup;
 
-    @Input() formContent: any;
-
     @Input() isOnSubmit: boolean = false;
     @Output() onSubmit = new EventEmitter<any>();
 
@@ -40,6 +38,7 @@ export class DataFormComponent implements OnInit {
     }
 
     submit() {
+        console.log(this.formInfo.value);
         this.onSubmit.emit(this.formInfo.value);
     }
 

@@ -4,7 +4,7 @@
         <ng-container *ngSwitchCase="'select'">
             <select class="form-control {{name}}" name="{{name}}" id="{{name}}" >
                 <ng-container *ngFor="let item of dataList">
-                    <option value="{{item.key}}">{{item.val}}</option>
+                    <option value="{{item.key}}">{{item.value}}</option>
                 </ng-container>
             </select>
         </ng-container>

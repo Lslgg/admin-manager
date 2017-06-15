@@ -18,6 +18,13 @@
             <ng-container *ngIf="type=='password'">
                 <input type="password" class="form-control" formControlName="{{name}}">
             </ng-container>
+
+            <ng-container *ngIf="type=='select'">
+              <select class="form-control" formControlName="{{name}}">
+                  <option *ngFor="let item of dataList" [value]="item.key">{{item.value}}</option>
+              </select>
+            </ng-container>
+
             <ng-content select="form-validator"></ng-content>
         </div>
     </ng-container>
