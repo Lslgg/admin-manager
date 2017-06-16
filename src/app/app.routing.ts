@@ -9,7 +9,7 @@ import { LoginComponent } from './admin/login/login.component';
 
 export const routes: Routes = [
   {
-    path: '', redirectTo: 'admin', pathMatch: 'full',
+    path: '', redirectTo: 'login', pathMatch: 'full',
   },
   {
     path: '', component: AdminComponent, data: { title: '首页' },

@@ -4,7 +4,6 @@ import { LoginService } from './shared/login.service';
 
 @Component({
     selector: 'admin-login',
-    styleUrls:['login.css'],
     templateUrl: 'login.html',
     providers: [LoginService ]
 })
