@@ -23,15 +23,9 @@ let commonList = [
 ];
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    exports: [
-        commonList
-    ],
-    declarations: [
-        commonList
-    ],
+    imports: [CommonModule],
+    exports: [commonList],
+    declarations: [commonList],
     providers: [TableService],
 })
 export class TableModule { }

@@ -22,6 +22,7 @@ import { TemplateModule } from './common/template';
 import { BreadcrumbsComponent } from '../component';
 import { TableModule } from '../component/table/table.module';
 import { DataFormModule } from '../component/dataform';
+import { TreeModule } from '../component/tree'
 
 import { SIDEBAR_TOGGLE_DIRECTIVES, NAV_DROPDOWN_DIRECTIVES, 
   AsideToggleDirective } from './common/directive';
@@ -44,6 +45,7 @@ let directive=[
     DataFormModule,    
     TemplateModule,
     TableModule,
+    TreeModule
   ],
   declarations: [
     directive,

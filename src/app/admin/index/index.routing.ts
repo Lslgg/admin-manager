@@ -7,6 +7,6 @@ export const IndexRoutes: Routes = [
    { path: 'index', component: IndexComponent, data: { title: '首页', module: 'index', power: "SHOW" } },
 ];
 
-//一定要将路由加载的模块导出到home.module模块
-export const ShowIndex = IndexComponent;
+//一定要将路由加载的模块导出到主模块
+export const IndexComponentList = [IndexComponent];
 

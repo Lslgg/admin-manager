@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
-import { RoleComponent } from './role.component';
-import { AddRoleComponent } from './component/addRole.component';
+import { RoleComponent, AddRoleComponent } from "./index";
 
 
 export const RoleRoutes: Routes = [
@@ -10,8 +9,8 @@ export const RoleRoutes: Routes = [
     { path: 'addRole/:id', component: AddRoleComponent, data: { title: '修改角色', module: 'role', power: "UPDATE" } }
 ];
 
-//一定要将路由加载的模块导出到home.module模块
-export const RoleList = [
+//一定要将路由加载的模块导出到主模块
+export const RoleComponentList = [
     RoleComponent,
     AddRoleComponent
 ];

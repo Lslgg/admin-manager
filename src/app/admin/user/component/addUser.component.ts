@@ -7,7 +7,7 @@ import { User } from '../shared/user.modle';
 
 
 @Component({
-    selector: 'user-add',
+    selector: 'admin-addUser',
     templateUrl: 'addUser.html',
     providers: [UserService]
 })
@@ -63,24 +63,21 @@ export class AddUserComponent implements OnInit {
     }
 
     onSubmit(formInfo: object) {
-        this.user.username = formInfo["username"];
-        this.user.email = formInfo["email"];
-        this.user.roleId = formInfo["roles"];
-        this.user.passWord = formInfo["pwdList"]["password"];
-        this.user.isValid = formInfo["pwdList"]["isValid"];
+        this.setUser(formInfo);
         if (this.user.id) {
             this.userService.updateUser(this.user, this.oldRoleId)
                 .then(success => {
                     alert(success ? "修改成功！" : "修改失败!");
                     this.router.navigate(['../admin/user']);
                 });
-        } else {
-            this.userService.addUser(this.user)
-                .then(success => {
-                    alert(success ? "保存成功！" : "保存失败!");
-                    this.router.navigate(['../admin/user']);
-                });
+            return;
         }
+        
+        this.userService.addUser(this.user)
+            .then(success => {
+                alert(success ? "保存成功！" : "保存失败!");
+                this.router.navigate(['../admin/user']);
+            });
     }
 
     private pwdMatch(g: FormGroup) {
@@ -91,5 +88,13 @@ export class AddUserComponent implements OnInit {
         } else {
             return null;
         }
+    }
+
+    private setUser(formInfo: object) {
+        this.user.username = formInfo["username"];
+        this.user.email = formInfo["email"];
+        this.user.roleId = formInfo["roles"];
+        this.user.passWord = formInfo["pwdList"]["password"];
+        this.user.isValid = formInfo["pwdList"]["isValid"];
     }
 }

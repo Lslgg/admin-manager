@@ -1,0 +1,21 @@
+<li class="ul_li">
+    <p class="li_p" menuhover>
+        <ng-container *ngIf="!tree.isLeaf">
+            <i class="fa fa-plus-square" id="{{tree.id}}" (click)="getSubMenu(tree.id)" aria-hidden="true" menuroot></i>
+            <i class="fa fa-folder" id="{{tree.id}}" aria-hidden="true"></i> {{tree.name}}
+        </ng-container>
+        <ng-container *ngIf="tree.isLeaf">
+            <i class="fa fa-file" aria-hidden="true"></i> {{tree.name}}
+        </ng-container>
+        <span class="operation hiden">
+            <i class="fa fa-plus mouse" title="添加" (click)="addMenu(tree.id,1)"></i>
+            <!--<i class="fa fa-edit mouse" title="修改" (click)="addMenu(item.id,2)"></i>-->
+            <i class="fa fa-remove mouse" title="删除" (click)="deleteMenu(tree.id,tree.pid);"></i>
+        </span>
+    </p>
+    <ul *ngIf="IsSubMenu" class="menu_{{tree.id}}">
+        <ng-container *ngFor="let tree of subList">
+            <tree-item [tree]="tree" (onDelete)="onDeleteInfo($event)" [treeList]="treeList"></tree-item>
+        </ng-container>
+    </ul>
+</li>
