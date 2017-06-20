@@ -1,24 +1,44 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tree } from "../shared/tree.modle";
 
 @Component({
     selector: 'data-tree',
-    styleUrls:['tree.css'],
-    templateUrl:'tree.html'
+    styleUrls: ['tree.css'],
+    templateUrl: 'tree.html'
 })
 
 export class TreeComponent implements OnInit {
 
-    @Input() treeList:Array<Tree>=[];
+    @Input() treeList: Array<Tree> = [];
 
-    fristList:Array<Tree>=[];
+    @Input() isShowRoot: boolean = true;
+
+    @Output() onGetSubTree = new EventEmitter<object>();
+
+    @Output() onAddTree = new EventEmitter<object>();
+
+    @Output() onDeleteTree = new EventEmitter<object>();
+
+    @Output() onUpdateTree = new EventEmitter<object>();
 
     constructor() { }
 
     ngOnInit() {
     }
 
-    getSubTree() {
-        this.fristList=this.treeList.filter(p=>p.pid=="0");
+    getSubTree(tree: Tree) {
+        this.onGetSubTree.emit(tree);
+    }
+
+    addTree(info: object) {
+        this.onAddTree.emit(info);
+    }
+
+    deleteTree(info: object) {
+        this.onDeleteTree.emit(info);
+    }
+
+    updateTree(info: object) {
+        this.onUpdateTree.emit(info);
     }
 }

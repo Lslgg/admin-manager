@@ -22,8 +22,6 @@ export class FormItemComponent implements OnInit {
     @Input() type: string;
 
     @Input() formInfo: FormGroup;
-    
-    @Input() formContent: any;
 
     @Input() dataList:Array<{key:string,value:string}>=[];
 

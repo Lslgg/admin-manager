@@ -1,1 +1,23 @@
-<div class="addMenu">addment</div>
+<template-panel-form>
+    <div plane-body>
+        <data-form [formInfo]="menuForm" (onSubmit)="onSubmit($event)">
+            <form-item [name]="'parentTitle'" [title]="'父级菜单'" [type]="'text'"></form-item>
+            <form-item [name]="'title'" [title]="'菜单名'" [type]="'text'">
+                <form-validator [type]="'required'" [title]="'请输入菜单名'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="5" [title]="'最少2个字符'"></form-validator>
+                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多24个字符'"></form-validator>
+            </form-item>
+            <form-item [name]="'code'" [title]="'编号'" [type]="'text'">
+                <form-validator [type]="'required'" [title]="'请输入编号'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="5" [title]="'最少2个字符'"></form-validator>
+                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多24个字符'"></form-validator>
+            </form-item>
+            <form-item [name]="'url'" [title]="'Url'" [type]="'text'">
+                <form-validator [type]="'required'" [title]="'请输入Url'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="5" [title]="'最少2个字符'"></form-validator>
+                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
+            </form-item>
+             <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
+        </data-form>
+    </div>
+</template-panel-form>

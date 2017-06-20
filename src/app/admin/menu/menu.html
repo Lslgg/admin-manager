@@ -1,5 +1,7 @@
 <template-panel-form>
   <div plane-body>
-    <data-tree [treeList]="treeList"></data-tree>
+    <data-tree [treeList]="treeList" (onGetSubTree)="onGetSubTree($event)"
+    (onAddTree)="onAddTree($event)" (onDeleteTree)="onDeleteTree($event)" 
+    (onUpdateTree)="onUpdateTree($event)"></data-tree>
   </div>
 </template-panel-form>

@@ -80,6 +80,7 @@ export class AddUserComponent implements OnInit {
             });
     }
 
+    //密码验证
     private pwdMatch(g: FormGroup) {
         let password = g.get('password').value;
         let passwordConfirm = g.get('passwordConfirm').value;

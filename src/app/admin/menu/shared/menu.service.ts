@@ -37,6 +37,7 @@ export class MenuService {
     public getListByPid(pid: string):Promise<Array<Menu>> {
         let query = this.Parse.setQuery(this.tableName);
         query.equalTo("pid",pid);
+        query.ascending("code"); 
         let promise=this.Parse.getList<Menu>(query);
         return promise;
     }
@@ -49,7 +50,7 @@ export class MenuService {
     }
 
     private setInfo(menu: Menu, dbInfo: any) {
-        dbInfo.set("id", menu.id);
+        // dbInfo.set("id", menu.id);
         dbInfo.set("title", menu.title);
         dbInfo.set("code", menu.code);
         dbInfo.set("url", menu.url);
