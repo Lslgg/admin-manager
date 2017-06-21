@@ -50,7 +50,7 @@ export class MenuService {
     }
 
     private setInfo(menu: Menu, dbInfo: any) {
-        // dbInfo.set("id", menu.id);
+        dbInfo.set("id", menu.id);
         dbInfo.set("title", menu.title);
         dbInfo.set("code", menu.code);
         dbInfo.set("url", menu.url);

@@ -16,9 +16,10 @@
     </p>
     <ul *ngIf="tree.IsSubMenu" class="menu_{{tree.id}}">
         <ng-container *ngFor="let tree of tree.subTrees">
-            <tree-item [tree]="tree" [treeList]="treeList" 
+            <tree-item [tree]="tree" [treeList]="treeList"
             (onGetSubTree)="getSubList($event)" (onAddTree)="addTree($event)" 
             (onDeleteTree)="deleteTree($event)" (onUpdateTree)="updateTree($event)"></tree-item>
         </ng-container>
     </ul>
 </li>
+

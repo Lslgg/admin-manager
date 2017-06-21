@@ -22,7 +22,10 @@ export class ParserManager implements ParserServer {
         let promise = new Promise((resolve, reject) => {
             table.save(null, {
                 success: (menu) => resolve(true),
-                error: (menu, error) => reject(false)
+                error: (menu, error) => {
+                    console.log(error);
+                    reject(false)
+                }
             });
         });
 

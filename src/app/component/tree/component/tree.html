@@ -2,15 +2,15 @@
     <ul>
         <li *ngIf="isShowRoot" menuhover>
             <p menuhover>
-                <i (click)="getSubTree({id:0})" class="fa fa-minus-square" id="0" aria-hidden="true" menuroot></i> 
+                <i (click)="getSubTree(null)" class="fa fa-minus-square" id="0" aria-hidden="true" menuroot></i> 
                 <i class="fa fa-folder" id="0" aria-hidden="true"></i> 根目录
                 <span class="operation">
-                    <i class="fa fa-plus mouse" title="添加" (click)="addTree({id:0,type:1})"></i>
+                    <i class="fa fa-plus mouse" title="添加" (click)="addTree('0')"></i>
                 </span>
             </p>
         </li>
         <ng-container  *ngFor="let tree of treeList">
-            <tree-item  [tree]="tree" [treeList]="treeList" 
+            <tree-item  [tree]="tree" [treeList]="treeList"
             (onGetSubTree)="getSubTree($event)" 
             (onAddTree)="addTree($event)" 
             (onDeleteTree)="deleteTree($event)" 

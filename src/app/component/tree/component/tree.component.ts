@@ -15,30 +15,31 @@ export class TreeComponent implements OnInit {
 
     @Output() onGetSubTree = new EventEmitter<object>();
 
-    @Output() onAddTree = new EventEmitter<object>();
+    @Output() onAddTree = new EventEmitter<string>();
 
     @Output() onDeleteTree = new EventEmitter<object>();
 
-    @Output() onUpdateTree = new EventEmitter<object>();
+    @Output() onUpdateTree = new EventEmitter<string>();
 
     constructor() { }
 
     ngOnInit() {
+        
     }
 
     getSubTree(tree: Tree) {
         this.onGetSubTree.emit(tree);
     }
 
-    addTree(info: object) {
-        this.onAddTree.emit(info);
+    addTree(id: string) {
+        this.onAddTree.emit(id);
     }
 
-    deleteTree(info: object) {
+    deleteTree(info: { id: string, pid: string }) {
         this.onDeleteTree.emit(info);
     }
 
-    updateTree(info: object) {
-        this.onUpdateTree.emit(info);
+    updateTree(id: string) {
+        this.onUpdateTree.emit(id);
     }
 }

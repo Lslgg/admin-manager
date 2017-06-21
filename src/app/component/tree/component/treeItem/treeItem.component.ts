@@ -16,10 +16,9 @@ export class TreeItemComponent implements OnInit {
 
     @Output() onGetSubTree = new EventEmitter<Tree>();
 
-    @Output() onAddTree = new EventEmitter<object>();
+    @Output() onAddTree = new EventEmitter<string>();
 
-    @Output() onUpdateTree = new EventEmitter<object>();
-
+    @Output() onUpdateTree = new EventEmitter<string>();
 
     constructor() {
 
@@ -34,12 +33,12 @@ export class TreeItemComponent implements OnInit {
         this.onGetSubTree.emit(tree);
     }
 
-    addSelfTree(id: string, type: number) {
-        this.onAddTree.emit({ id: id, type: type });
+    addSelfTree(id: string) {
+        this.onAddTree.emit(id);
     }
 
     updateSelfTree(id: string, type: number) {
-        this.onUpdateTree.emit({ id: id, type: type })
+        this.onUpdateTree.emit(id)
     }
 
     deleteSelfTree(id: string, pid: string) {
@@ -50,12 +49,12 @@ export class TreeItemComponent implements OnInit {
         this.onGetSubTree.emit(tree);
     }
 
-    addTree(info: { id: string, type: string }) {
-        this.onAddTree.emit(info);
+    addTree(id:string) {
+        this.onAddTree.emit(id);
     }
 
-    updateTree(id: string, type: number) {
-        this.onUpdateTree.emit({ id: id, type: type })
+    updateTree(id:string) {
+        this.onUpdateTree.emit(id)
     }
 
     deleteTree(info: { id: string, pid: string }) {
