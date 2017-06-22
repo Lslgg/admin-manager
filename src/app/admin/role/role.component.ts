@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoleService } from './shared/role.Service';
+import { RoleService } from './shared';
+
 @Component({
     selector: 'admi-role',
     templateUrl: 'role.html',
@@ -22,7 +23,7 @@ export class RoleComponent implements OnInit {
             success => alert("删除成功!"));
     }
 
-    onEventList(info: object) {
+    onSetInfo(info: object) {
         let id = info["id"];
         let type = info["type"];
         if (type == "roleName") {

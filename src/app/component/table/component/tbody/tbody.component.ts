@@ -9,7 +9,7 @@ import { TableService } from '../../shared/table.service';
 
 @Component({
     selector: 'tbody',
-    styleUrls:['../table.css'],
+    styleUrls: ['../table.css'],
     templateUrl: 'tbody.html',
     providers: [TableService],
 
@@ -21,79 +21,82 @@ export class TbodyComponent implements OnInit {
 
     @Input() key: string = "id";
 
-    @Input() IsOnUpdate:boolean=false;
+    @Input() isShowPagiation:boolean=true;
+
+    @Input() pageSize: number = 10;
+
+    @Input() IsOnUpdate: boolean = false;
     @Output() onUpdate = new EventEmitter<string>();
 
-    @Input() IsOnDelete:boolean=false;
+    @Input() IsOnDelete: boolean = false;
     @Output() onDelete = new EventEmitter<string>();
 
-    @Input() IsOnIsValue:boolean=false;
+    @Input() IsOnIsValue: boolean = false;
     @Output() onIsValue = new EventEmitter<string>();
 
-    @Input() IsOnEventList:boolean=false;
-    @Output() onEventList = new EventEmitter<any>();
+    @Input() IsSetInfo: boolean = false;
+    @Output() onSetInfo = new EventEmitter<IdType>();
 
     @ContentChild(PagiationComponent) Pagiation: PagiationComponent;
 
     rowNameList: Array<{ name: string, type: string, columnSpan: number, rowsetSpan: number }> = [];
 
-    pagiztionColSpan:number=1;
+    pagiztionColSpan: number = 1;
 
     operationList: Array<string> = [];
 
-    pageCount:number;
-
-    pageSize: number = 10;
+    pageCount: number;
 
     moduleName: string = "";
 
-    conditionList:ConditionList=[];
+    conditionList: ConditionList = [];
 
-    constructor(private tbs: TableService,public elementRef: ElementRef) {
+    constructor(private tbs: TableService, public elementRef: ElementRef) {
 
     }
 
     ngOnInit() {
         let operation = this.elementRef.nativeElement.getAttribute("operation");
-        this.operationList = operation.split("|");
+        if (operation) {
+            this.operationList = operation.split("|");
+        }
 
         this.ongetPage(1);
     }
 
     ongetPage(pageIndex: number) {
-        this.tbs.Parse.pages.index=pageIndex;
-        this.tbs.Parse.pages.size=this.pageSize;
-        this.tbs.Parse.pages.name=this.moduleName;
-        this.tbs.Parse.pages.coditions=this.conditionList;
-        this.tbs.getDataList(this.tbs.Parse.pages).then(result=>{
-            this.dataList=result.list;
-            this.pageCount=result.count;
+        this.tbs.Parse.pages.index = pageIndex;
+        this.tbs.Parse.pages.size = this.pageSize;
+        this.tbs.Parse.pages.name = this.moduleName;
+        this.tbs.Parse.pages.coditions = this.conditionList;
+        this.tbs.getDataList(this.tbs.Parse.pages).then(result => {
+            this.dataList = result.list;
+            this.pageCount = result.count;
         })
     }
 
     delInfo(id: string) {
-        if(confirm("是否真的要删除！")){
+        if (confirm("是否真的要删除！")) {
             this.onDelete.emit(id);
-            this.dataList=this.dataList.filter(val=> val["id"]!=id);
-            this.pageCount=this.pageCount-1;
-            if(this.IsOnDelete) return;
+            this.dataList = this.dataList.filter(val => val["id"] != id);
+            this.pageCount = this.pageCount - 1;
+            if (this.IsOnDelete) return;
         }
     }
 
     update(id: string) {
         this.onUpdate.emit(id);
-        if(this.IsOnUpdate) return;
+        if (this.IsOnUpdate) return;
     }
 
     isValue(id: string) {
         this.onIsValue.emit(id);
-        if(this.IsOnIsValue) return;
-        
+        if (this.IsOnIsValue) return;
+
     }
 
-    eventList(info: object) {
-        this.onEventList.emit(info);
-        if(this.IsOnEventList) return;
+    setInfo(info: IdType) {
+        this.onSetInfo.emit(info);
     }
 
 }

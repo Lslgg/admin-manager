@@ -4,6 +4,8 @@ import { IndexRoutes, IndexComponentList } from './index/';
 import { UserRoutes, UserComponentList } from './user/user.routing';
 import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';
+import { PowerRoutes,PowerComponentList } from './power/power.routing';
+
 
 export var routeList: Routes = [];
 
@@ -15,6 +17,8 @@ routeList = routeList.concat(UserRoutes);
 routeList = routeList.concat(RoleRoutes);
 //菜单管理
 routeList = routeList.concat(MenuRoutes);
+//权限管理
+routeList = routeList.concat(PowerRoutes);
 
 
 @NgModule({
@@ -30,5 +34,6 @@ export const ComponentList = [
   IndexComponentList, 
   UserComponentList, 
   RoleComponentList,
-  MenuComponentList
+  MenuComponentList,
+  PowerComponentList
 ]

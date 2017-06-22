@@ -1,9 +1,17 @@
 <ng-container [ngSwitch]="colType">
     <ng-container *ngSwitchCase="'link'">
-        <a href="javascript:;" (click)="eventList(id,field)">{{title}}</a>
+        <a href="javascript:;" (click)="setInfo({id:id,type:field})">{{title}}</a> 
     </ng-container>
     <ng-container *ngSwitchCase="'image'">
         <img src="/images/img.jpg" />
+    </ng-container>
+    <ng-container *ngSwitchCase="'state'">
+        <ng-container *ngIf="title">
+            <span class="badge badge-success">有效</span>
+        </ng-container>
+        <ng-container *ngIf="!title"> 
+            <span class="badge badge-default">无效</span>
+        </ng-container>
     </ng-container>
     <ng-container *ngSwitchDefault>{{ title }}</ng-container>
 </ng-container>

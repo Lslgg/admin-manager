@@ -9,6 +9,8 @@ export class PanelTableComponent {
 
     @Input() Title:string;
 
+    @Input() showOpeation:boolean=true;
+
     @Output() onAdd = new EventEmitter<number>();
 
     onAddInfo(){

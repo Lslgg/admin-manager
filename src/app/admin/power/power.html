@@ -1,0 +1,33 @@
+<template-panel-table [Title]="'权限管理列表'" [showOpeation]="false">
+
+    <div class="form-group" plane-body>
+        <div class="input-group">
+            <button class="btn btn-primary" type="button" data-toggle="modal" (click)="addModal.show()"><i class="fa fa-plus"></i> 添加</button>
+            <button class="btn btn-info" type="button" data-toggle="modal" (click)="lgModal.show()"><i class="fa fa-edit"></i>选择菜单</button>
+            <button class="btn btn-danger" type="button" (click)="onCheckboDelete()"><i class="fa fa-minus"></i>删除</button>
+        </div>
+        <data-modal #addModal [title]="'添加权限'"></data-modal>
+        <data-modal #lgModal [title]="'菜单列表'" (onModalSave)="onModalSave(tableMenu.dataList)">
+            <data-table [modlueName]="'Menu'" [isSearch]="false" [conditionList]="menuCondition" plane-body>
+                <thead>
+                    <th name="title" type="link">名称</th>
+                    <th name="url">Url</th>
+                    <th name="isValid" type="state">状态</th>
+                </thead>
+                <tbody #tableMenu [isShowPagiation]="false" [pageSize]="100"></tbody>
+            </data-table>
+        </data-modal>
+        <data-modal #funModal [title]="'功能权限'"></data-modal>
+    </div>
+
+    <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
+        <thead>
+            <th name="title" type="link">名称</th>
+            <th name="url">Url</th>
+            <th name="isValid" type="state">状态</th>
+            <th name="#" type="operation">操作</th>
+        </thead>
+        <tbody operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal);"></tbody>
+    </data-table>
+
+</template-panel-table>

@@ -13,6 +13,8 @@ export class TreeComponent implements OnInit {
 
     @Input() isShowRoot: boolean = true;
 
+    @Input() isOperation:boolean=false;
+
     @Output() onGetSubTree = new EventEmitter<object>();
 
     @Output() onAddTree = new EventEmitter<string>();

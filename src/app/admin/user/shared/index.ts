@@ -1,2 +1,2 @@
 export * from './user.service';
-export * from './user.modle';
+export * from './user.model';

@@ -33,9 +33,8 @@ export class UserComponent implements OnInit {
         this.router.navigate(['../admin/addUser']);
     }
 
-    onEventList(info:object){
-        let id=info["id"];
-        let type=info["type"];
+    onSetInfo(info:IdType){
+        let {id,type}=info;
         if(type=="username"){
             this.router.navigate(['../admin/addUser', id]);
         }

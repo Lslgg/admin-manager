@@ -6,21 +6,24 @@ declare var System: any;
 
 declare var Parse: any;
 
-type Tclass<T>={ new (): T };
+type Tclass<T> = { new (): T };
 
-type ConditionList=Array<{ field: string, value: string, condition: string }>
+type ConditionList = Array<{ field: string, value: string|number|boolean, condition: string }>
 
-type OrderList=Array<{field:string,orderType:string}>;
+type OrderList = Array<{ field: string, orderType: string }>;
+
+//Output事件参数
+type IdType = { id: string, type: string };
 
 /**
  * 分页条件
  */
-interface Pages{
+interface Pages {
     index: number,
     size: number,
     name: string,
-    orders:OrderList,
-    coditions:ConditionList,
+    orders: OrderList,
+    coditions: ConditionList,
 }
 
 /**
@@ -33,11 +36,11 @@ interface ParserServer {
      * Parse初始对象
      */
     Parse: any;
-    
+
     /**
      * 分页信息
      */
-    pages:Pages;
+    pages: Pages;
 
     /**
      * 添加
@@ -70,13 +73,13 @@ interface ParserServer {
      */
     getInfo<T>(id: string, tablename: string, tClass?: Tclass<T>): Promise<T>;
 
-     /**
-     * 分页查找
-     * @param pageInfo 分页条件 
-     * @param tClass 是否使用泛型实例
-     * @return 实例对象列表，总数
-     */
-    getPageList<T>(pageInfo:Pages,tClass?:Tclass<T>): Promise<{list:Array<T>,count:number}>;
+    /**
+    * 分页查找
+    * @param pageInfo 分页条件 
+    * @param tClass 是否使用泛型实例
+    * @return 实例对象列表，总数
+    */
+    getPageList<T>(pageInfo: Pages, tClass?: Tclass<T>): Promise<{ list: Array<T>, count: number }>;
 
     /**
      * 查找总数
@@ -84,7 +87,7 @@ interface ParserServer {
      * @param conditionList 条件
      * @return 总数     
      */
-    getCount(tableName: string,conditionList:ConditionList): Promise<number>;
+    getCount(tableName: string, conditionList: ConditionList): Promise<number>;
 
     /**
      * 条件查找

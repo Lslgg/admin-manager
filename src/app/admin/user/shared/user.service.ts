@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { User, CardLog } from './user.modle'
+import { User, CardLog } from './user.model'
 
 @Injectable()
 export class UserService {

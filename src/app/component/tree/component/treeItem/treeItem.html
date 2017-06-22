@@ -9,17 +9,16 @@
             <i class="fa fa-file" aria-hidden="true"></i> 
             <a href="javascript:;" (click)="updateSelfTree(tree.id,2)"> {{tree.name}}</a>
         </ng-container>
-        <span class="operation hiden">
+        <span *ngIf="isOperation" class="operation hiden">
             <i class="fa fa-plus mouse" title="添加" (click)="addSelfTree(tree.id,1)"></i>
             <i class="fa fa-remove mouse" title="删除" (click)="deleteSelfTree(tree.id,tree.pid);"></i>
         </span>
     </p>
     <ul *ngIf="tree.IsSubMenu" class="menu_{{tree.id}}">
         <ng-container *ngFor="let tree of tree.subTrees">
-            <tree-item [tree]="tree" [treeList]="treeList"
+            <tree-item [tree]="tree" [treeList]="treeList" [isOperation]="false"
             (onGetSubTree)="getSubList($event)" (onAddTree)="addTree($event)" 
             (onDeleteTree)="deleteTree($event)" (onUpdateTree)="updateTree($event)"></tree-item>
         </ng-container>
     </ul>
 </li>
-

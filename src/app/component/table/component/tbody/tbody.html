@@ -23,6 +23,9 @@
                             <ng-container *ngSwitchCase="'启用'">
                                 <a href="javascript:;" (click)="isValue(item[key])">{{info}}</a>
                             </ng-container>
+                            <ng-container *ngSwitchDefault>
+                                <a href="javascript:;" (click)="setInfo({id:item[key],type:info})">{{info}}</a> 
+                            </ng-container>
                         </ng-container>
                     </ng-container>
                 </td>
@@ -30,14 +33,14 @@
 
             <ng-container *ngSwitchDefault>
                 <td [attr.colspan]="row.columnSpan" [title]="item[row.name]" [id]="item[key]" [field]="row.name" [colType]="row.type" 
-                    (onEventList)="eventList($event)"
+                    (onSetInfo)="setInfo($event)"
                     tbody-td></td>
             </ng-container>
 
         </ng-container>
     </ng-container>
 </tr>
-<tr>
+<tr *ngIf="isShowPagiation">
     <td [attr.colspan]="pagiztionColSpan" >
         <pagiation [pageCount]="pageCount" [pageSize]="pageSize" 
             (ongetPage)="ongetPage($event)">

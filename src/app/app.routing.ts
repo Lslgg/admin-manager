@@ -21,7 +21,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'login', component: LoginComponent, data: { title: 'login' }
+    path: 'login', component: LoginComponent, data: { title: '登录' }
   }
 ];
 

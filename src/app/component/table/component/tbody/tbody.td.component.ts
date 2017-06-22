@@ -15,13 +15,13 @@ export class TbodyTdComponent implements OnInit {
 
     @Input() field: string;
 
-    @Output() onEventList = new EventEmitter<any>();
+    @Output() onSetInfo = new EventEmitter<any>();
 
     constructor() { }
 
     ngOnInit() { }
 
-    eventList(id: string, type: string) {
-        this.onEventList.emit({id,type});
+    setInfo(info:IdType) {
+        this.onSetInfo.emit(info); 
     }
 }

@@ -6,11 +6,14 @@ import { Tree } from "../../shared/tree.modle";
     styleUrls: ["../tree.css"],
     templateUrl: 'treeItem.html',
 })
+
 export class TreeItemComponent implements OnInit {
 
     @Input() tree: Tree;
 
     @Input() treeList: Array<Tree> = [];
+
+    @Input() isOperation:boolean=false;
 
     @Output() onDeleteTree = new EventEmitter<object>();
 

@@ -1,2 +1,2 @@
 export * from "./menu.service";
-export * from "./menu.modle";
+export * from "./menu.model";

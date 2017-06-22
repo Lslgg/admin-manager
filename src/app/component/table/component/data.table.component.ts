@@ -16,6 +16,8 @@ export class DataTableComponent implements OnInit {
 
     @Input() isSearch: boolean = true;
 
+    @Input() conditionList: ConditionList = [];
+
     @Output() onSearch = new EventEmitter<object>();
 
     @ViewChild('tableSearch') headerViewChild: ElementRef;
@@ -37,11 +39,13 @@ export class DataTableComponent implements OnInit {
 
     ngOnInit() {
         this.tbody.moduleName = this.modlueName;
+        this.tbody.conditionList=this.conditionList;
     }
 
     search() {
         let elementList = this.headerViewChild.nativeElement.querySelectorAll("search-item");
         let length = elementList.length;
+        
         let list: Array<{ field: string, value: string, condition: string }> = [];
 
         for (var index = 0; index < length; index++) {
