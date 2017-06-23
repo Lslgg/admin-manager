@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { DataModalComponent } from './dataModal.component';
 
 @NgModule({
     imports: [
-        FormsModule,
+        CommonModule,
         ModalModule
     ],
     exports: [ DataModalComponent ],

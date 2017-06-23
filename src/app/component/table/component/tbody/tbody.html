@@ -3,7 +3,10 @@
         <ng-container [ngSwitch]="row.type">
 
             <ng-container *ngSwitchCase="'checkbox'">
-                <td><input type="checkbox" /></td>
+                <td>
+                    <input type="checkbox" name="checkbox" id="checkbox" [checked]="item.isCheck" 
+                        (change)="onchecked(item,checkbox.checked)" #checkbox>
+                </td>
             </ng-container>
 
             <ng-container *ngSwitchCase="'#'">
@@ -24,7 +27,7 @@
                                 <a href="javascript:;" (click)="isValue(item[key])">{{info}}</a>
                             </ng-container>
                             <ng-container *ngSwitchDefault>
-                                <a href="javascript:;" (click)="setInfo({id:item[key],type:info})">{{info}}</a> 
+                                <a href="javascript:;" (click)="setInfo({id:item[key],type:info})">{{info}}</a>
                             </ng-container>
                         </ng-container>
                     </ng-container>
@@ -32,8 +35,8 @@
             </ng-container>
 
             <ng-container *ngSwitchDefault>
-                <td [attr.colspan]="row.columnSpan" [title]="item[row.name]" [id]="item[key]" [field]="row.name" [colType]="row.type" 
-                    (onSetInfo)="setInfo($event)"
+                <td [attr.colspan]="row.columnSpan" [title]="item[row.name]" [id]="item[key]" 
+                    [field]="row.name" [colType]="row.type" [item]="item" (onSetInfo)="setInfo($event)"
                     tbody-td></td>
             </ng-container>
 
@@ -41,9 +44,8 @@
     </ng-container>
 </tr>
 <tr *ngIf="isShowPagiation">
-    <td [attr.colspan]="pagiztionColSpan" >
-        <pagiation [pageCount]="pageCount" [pageSize]="pageSize" 
-            (ongetPage)="ongetPage($event)">
+    <td [attr.colspan]="pagiztionColSpan">
+        <pagiation [pageCount]="pageCount" [pageSize]="pageSize" (ongetPage)="ongetPage($event)">
         </pagiation>
     </td>
 </tr>

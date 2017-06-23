@@ -1,11 +1,13 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild,Output, EventEmitter,Input } from '@angular/core';
 
 @Component({
     selector: 'thead',
     styleUrls:['./table.css'],
     template: ` 
         <tr class="theadTr" #theadTr>
-            <th name="#" type="checkbox"> <input type="checkbox" /> </th>
+            <th *ngIf="isShowCheckbox" name="#" type="checkbox" width="20"> 
+                <input type="checkbox" name="checkAll" (click)="allchecked(checkAll.checked)" #checkAll>
+            </th>
             <ng-content select="th"></ng-content>
         </tr>
     `
@@ -14,6 +16,10 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 export class TheadComponent implements OnInit {
 
     rowList: Array<{ name: string, type: string, columnSpan: number, rowsetSpan: number }> = [];
+
+    @Output() onCheckAll= new EventEmitter<Boolean>();
+
+    @Input() isShowCheckbox:boolean=true;
 
     constructor(public elementRef: ElementRef) {
 
@@ -39,4 +45,8 @@ export class TheadComponent implements OnInit {
     }
 
     ngOnInit() { }
+
+    allchecked(checked:boolean){
+        this.onCheckAll.emit(checked);
+    }
 }

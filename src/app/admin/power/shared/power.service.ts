@@ -12,10 +12,11 @@ export class PowerService {
         this.Parse = parse;
     }
 
-    //查找权限表
-    getInfo(roleId: string): Promise<any> {
-        return null;
+    getRoleInfo(id:string):Promise<RoleInfo>{
+        let promise=this.Parse.getInfo(id,"Role");
+        return promise;
     }
+
 
     //修改或保存权限表
     saveInfo(powers: Array<Power>): Promise<boolean> {
@@ -29,7 +30,7 @@ export class PowerService {
         return promise;
     }
 
-    //修改或保存权限表
+    //修改或保存权限与角色表
     saveRolePower(powers: Array<RolePower>): Promise<boolean> {
         var powerList = [];
         for (var i = 0; i < powers.length; i++) {
@@ -114,13 +115,13 @@ export class PowerService {
         return dbInfo;
     }
 
-    public operationMap():Array<string>{
-        var operatinMap=[];
-        operatinMap["SHOW"] = "查看";
-        operatinMap["ADD"] = "添加";
-        operatinMap["UPDATE"] = "修改";
-        operatinMap["DELETE"] = "删除";
-        operatinMap["CHECK"] = "审核";
+    public operationMap():Map<string,string>{
+        var operatinMap=new Map<string,string>();
+        operatinMap.set("SHOW","查看");
+        operatinMap.set("ADD","添加");
+        operatinMap.set("UPDATE","修改");
+        operatinMap.set("DELETE","删除");
+        operatinMap.set("CHECK", "审核");
         return operatinMap;
     }
 }

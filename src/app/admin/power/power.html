@@ -1,15 +1,37 @@
 <template-panel-table [Title]="'权限管理列表'" [showOpeation]="false">
 
     <div class="form-group" plane-body>
+
         <div class="input-group">
             <button class="btn btn-primary" type="button" data-toggle="modal" (click)="addModal.show()"><i class="fa fa-plus"></i> 添加</button>
             <button class="btn btn-info" type="button" data-toggle="modal" (click)="lgModal.show()"><i class="fa fa-edit"></i>选择菜单</button>
-            <button class="btn btn-danger" type="button" (click)="onCheckboDelete()"><i class="fa fa-minus"></i>删除</button>
+            <button class="btn btn-danger" type="button" (click)="onCheckboDelete(tablePower.dataList,tablePower)"><i class="fa fa-minus"></i>删除</button>
         </div>
-        <data-modal #addModal [title]="'添加权限'"></data-modal>
-        <data-modal #lgModal [title]="'菜单列表'" (onModalSave)="onModalSave(tableMenu.dataList)">
+
+        <data-modal #addModal [title]="'添加权限'" [isShowFooter]="false">
+            <data-form [formInfo]="powerForm" (onSubmit)="onSubmit($event,tablePower);addModal.close();">
+                <form-item [name]="'title'" [title]="'名称'" [type]="'text'">
+                    <form-validator [type]="'required'" [title]="'请输入名称'"></form-validator>
+                    <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
+                    <form-validator [type]="'maxLength'" [value]="24" [title]="'最多24个字符'"></form-validator>
+                </form-item>
+                <form-item [name]="'code'" [title]="'编号'" [type]="'text'">
+                    <form-validator [type]="'required'" [title]="'请输入编号'"></form-validator>
+                    <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
+                    <form-validator [type]="'maxLength'" [value]="24" [title]="'最多24个字符'"></form-validator>
+                </form-item>
+                <form-item [name]="'url'" [title]="'Url'" [type]="'text'">
+                    <form-validator [type]="'required'" [title]="'请输入Url'"></form-validator>
+                    <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
+                    <form-validator [type]="'maxLength'" [value]="24" [title]="'最多12个字符'"></form-validator>
+                </form-item>
+                <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
+            </data-form>
+        </data-modal>
+
+        <data-modal #lgModal [title]="'菜单列表'" (onModalSave)="onModalSave(tableMenu.dataList,tablePower)">
             <data-table [modlueName]="'Menu'" [isSearch]="false" [conditionList]="menuCondition" plane-body>
-                <thead>
+                <thead (onCheckAll)="onCheckAll($event,tableMenu.dataList)">
                     <th name="title" type="link">名称</th>
                     <th name="url">Url</th>
                     <th name="isValid" type="state">状态</th>
@@ -17,17 +39,32 @@
                 <tbody #tableMenu [isShowPagiation]="false" [pageSize]="100"></tbody>
             </data-table>
         </data-modal>
-        <data-modal #funModal [title]="'功能权限'"></data-modal>
+
+        <data-modal #funModal [title]="'功能权限'" (onModalSave)="onSaveFunPower()">
+            <ol>
+                <li><input type="checkbox" [checked]="'SHOW' | Checked: nowPower.operation" value="SHOW" (change)="onFunCheck($event)">查看
+                    </li>
+                <li><input type="checkbox" [checked]="'ADD' | Checked: nowPower.operation" value="ADD" (change)="onFunCheck($event)">添加
+                    </li>
+                <li><input type="checkbox" [checked]="'UPDATE' | Checked: nowPower.operation" value="UPDATE" (change)="onFunCheck($event)">修改
+                    </li>
+                <li><input type="checkbox" [checked]="'DELETE' | Checked: nowPower.operation" value="DELETE" (change)="onFunCheck($event)">删除
+                    </li>
+                <li><input type="checkbox" [checked]="'CHECK' | Checked: nowPower.operation" value="CHECK" (change)="onFunCheck($event)">审核
+                    </li>
+            </ol>
+        </data-modal>
+
     </div>
 
     <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
-        <thead>
+        <thead (onCheckAll)="onCheckAll($event,tablePower.dataList)">
             <th name="title" type="link">名称</th>
             <th name="url">Url</th>
             <th name="isValid" type="state">状态</th>
             <th name="#" type="operation">操作</th>
         </thead>
-        <tbody operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal);"></tbody>
+        <tbody #tablePower operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal,tablePower.dataList);"></tbody>
     </data-table>
 
 </template-panel-table>

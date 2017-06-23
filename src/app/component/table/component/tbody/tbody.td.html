@@ -1,17 +1,34 @@
 <ng-container [ngSwitch]="colType">
     <ng-container *ngSwitchCase="'link'">
-        <a href="javascript:;" (click)="setInfo({id:id,type:field})">{{title}}</a> 
+        <a href="javascript:;" (click)="setInfo({id:id,type:field})">{{title}}</a>
     </ng-container>
     <ng-container *ngSwitchCase="'image'">
         <img src="/images/img.jpg" />
     </ng-container>
+    <!--list true or false 列表-->
     <ng-container *ngSwitchCase="'state'">
         <ng-container *ngIf="title">
             <span class="badge badge-success">有效</span>
         </ng-container>
-        <ng-container *ngIf="!title"> 
+        <ng-container *ngIf="!title">
             <span class="badge badge-default">无效</span>
         </ng-container>
     </ng-container>
+    <!--list {string}列表-->
+    <ng-container *ngSwitchCase="'list'">
+        <ng-container *ngFor="let val of title">
+            <span class="badge badge-success">{{ val }}</span>
+        </ng-container>
+    </ng-container>
+    <!--checkboxList{value,name,isCheck} 列表-->
+    <ng-container *ngSwitchCase="'checkboxList'">
+        <input type="checkbox" name="checkAll" 
+            [checked]="true" (click)="allCheck(checkAll.checked)" #checkAll/> 全选 |
+        <ng-container *ngFor="let val of title">
+            <input [checked]="val['isCheck']" type="checkbox" value="{{ val['value'] }}" 
+            (click)="singleCheck(val)" /> {{ val['name'] }}
+        </ng-container>
+    </ng-container>
+
     <ng-container *ngSwitchDefault>{{ title }}</ng-container>
 </ng-container>

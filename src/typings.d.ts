@@ -14,6 +14,10 @@ type OrderList = Array<{ field: string, orderType: string }>;
 
 //Output事件参数
 type IdType = { id: string, type: string };
+type IdTypeObject = { id: string, type: string, info:object };
+
+type CheckboxList= { value:string,name:string,isCheck:boolean };
+
 
 /**
  * 分页条件

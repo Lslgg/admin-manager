@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <ng-content></ng-content>
             </div>
-            <div class="modal-footer">
+            <div *ngIf="isShowFooter" class="modal-footer">
                 <button class="btn btn-secondary" type="button" (click)="lgModal.hide()" aria-label="Close">关闭</button>
                 <button class="btn btn-primary" type="button" (click)="modalSave();lgModal.hide()" aria-label="Close">保存</button>
             </div>

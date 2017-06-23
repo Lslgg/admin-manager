@@ -17,7 +17,9 @@ import { TableService } from '../../shared/table.service';
 
 export class TbodyComponent implements OnInit {
 
-    @Input() dataList: Array<Object>;
+    @Input() dataList: Array<Object>=[];
+
+    @Input() isAutomaticList:boolean=true;
 
     @Input() key: string = "id";
 
@@ -60,8 +62,10 @@ export class TbodyComponent implements OnInit {
         if (operation) {
             this.operationList = operation.split("|");
         }
-
-        this.ongetPage(1);
+        
+        if(this.isAutomaticList){
+            this.ongetPage(1);
+        }
     }
 
     ongetPage(pageIndex: number) {
@@ -69,10 +73,17 @@ export class TbodyComponent implements OnInit {
         this.tbs.Parse.pages.size = this.pageSize;
         this.tbs.Parse.pages.name = this.moduleName;
         this.tbs.Parse.pages.coditions = this.conditionList;
+        this.dataList=[];
         this.tbs.getDataList(this.tbs.Parse.pages).then(result => {
-            this.dataList = result.list;
+            result.list.forEach(p=>{
+                this.dataList.push(Object.assign(p,{isCheck:false}));
+            })
             this.pageCount = result.count;
         })
+    }
+
+    onchecked(item:object,ischeck:boolean){
+        item["isCheck"]=ischeck;
     }
 
     delInfo(id: string) {
@@ -81,6 +92,9 @@ export class TbodyComponent implements OnInit {
             this.dataList = this.dataList.filter(val => val["id"] != id);
             this.pageCount = this.pageCount - 1;
             if (this.IsOnDelete) return;
+            this.tbs.delInfo(id,this.moduleName).then(success=>{
+                alert(success?"删除成功！":"删除失败！");
+            })
         }
     }
 

@@ -14,7 +14,8 @@ export class TableService {
         return list;
     }
 
-    delInfo(id:string,tableName:string){
-        
+    delInfo(id:string,tableName:string):Promise<boolean>{
+       let promise= this.Parse.delete(id,tableName);
+       return promise;
     }
 }

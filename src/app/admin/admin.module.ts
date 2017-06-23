@@ -24,6 +24,7 @@ import { TableModule } from '../component/table/table.module';
 import { DataFormModule } from '../component/dataform';
 import { TreeModule } from '../component/tree';
 import { DataModalModule } from '../component/dataModal';
+import { CheckedPipe, KeysPipe} from './power/shared/power.pipe'
 
 
 import { SIDEBAR_TOGGLE_DIRECTIVES, NAV_DROPDOWN_DIRECTIVES, 
@@ -57,7 +58,9 @@ let directive=[
     FooterComponent,
     SidebarComponent,
     BreadcrumbsComponent,
-    ComponentList
+    ComponentList,
+    CheckedPipe,
+    KeysPipe
   ],
   providers: [
     {

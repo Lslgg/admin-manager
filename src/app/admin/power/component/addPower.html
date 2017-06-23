@@ -1,0 +1,45 @@
+<template-panel-table [showOpeation]="false">
+    <div plane-body>
+        <div class="row">
+            <div class="col-md-2 left">
+                <div class="card">
+                    <div class="card-header">角色({{roleName}})
+                    </div>
+                    <div class="card-block">
+                        <data-tree [treeList]="treeList" (onUpdateTree)="onUpdateTree($event)"></data-tree>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 right">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="float-left">
+                            <a href="javascript:;" (click)="funModal.show();"> <i class="fa fa-plus-square"></i>添加权限</a>
+                            <a href="javascript:;" (click)="onDelList()"> <i class="fa fa-trash"></i>删除</a>  
+                        </span>
+                    </div>
+                    <div class="card-block">
+                        <data-table [modlueName]="'RolePower'" [isSearch]="false" plane-body>
+                            <thead (onCheckAll)="onCheckAll($event,tableRolePower.dataList)">
+                                <th name="title" type="link">名称</th>
+                                <th name="operationMap" type="list">功能权限</th>
+                            </thead>
+                            <tbody #tableRolePower [isShowPagiation]="false" [isAutomaticList]="false" [pageSize]="100" [dataList]="dataList"></tbody>
+                        </data-table>
+                    </div>
+                </div>
+                <data-modal #funModal [title]="'功能权限'" (onModalSave)="onModalSave(tablePower.dataList)">
+                    <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
+                        <thead (onCheckAll)="onCheckAll($event,tablePower.dataList)">
+                            <th name="title" type="link">名称</th>
+                            <th name="checkboxList" type="checkboxList">功能权限</th>
+                        </thead>
+                        <tbody #tablePower [isShowPagiation]="false" 
+                            [isAutomaticList]="false" 
+                            [pageSize]="100" [dataList]="powerList"></tbody>
+                    </data-table>
+                </data-modal>
+            </div>
+        </div>
+    </div>
+</template-panel-table>
