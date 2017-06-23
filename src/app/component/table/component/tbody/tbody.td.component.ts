@@ -23,8 +23,8 @@ export class TbodyTdComponent implements OnInit {
 
     ngOnInit() { }
 
-    setInfo(id: string, type: string) {
-        this.onSetInfo.emit({id,type});
+    setInfo(info:IdType) {
+        this.onSetInfo.emit(info);
     }
     
     allCheck(isCheck:boolean){
