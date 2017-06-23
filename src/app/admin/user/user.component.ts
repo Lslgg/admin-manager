@@ -34,7 +34,6 @@ export class UserComponent implements OnInit {
     }
 
     onSetInfo(info:IdType){
-        console.log(info);
         let {id,type}=info;
         if(type=="username"){
             this.router.navigate(['../admin/addUser', id]);

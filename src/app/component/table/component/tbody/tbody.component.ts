@@ -39,6 +39,8 @@ export class TbodyComponent implements OnInit {
     @Input() IsSetInfo: boolean = false;
     @Output() onSetInfo = new EventEmitter<IdType>();
 
+    @Output() ongetPageList=new EventEmitter<number>();
+
     @ContentChild(PagiationComponent) Pagiation: PagiationComponent;
 
     rowNameList: Array<{ name: string, type: string, columnSpan: number, rowsetSpan: number }> = [];
