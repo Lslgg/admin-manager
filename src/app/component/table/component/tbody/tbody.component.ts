@@ -8,7 +8,7 @@ import { PagiationComponent } from '../pagiation/pagiation.component';
 import { TableService } from '../../shared/table.service';
 
 @Component({
-    selector: 'tbody',
+    selector: '.data-tbody',
     styleUrls: ['../table.css'],
     templateUrl: 'tbody.html',
     providers: [TableService],

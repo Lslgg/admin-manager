@@ -20,21 +20,21 @@
                     </div>
                     <div class="card-block">
                         <data-table [modlueName]="'RolePower'" [isSearch]="false" plane-body>
-                            <thead (onCheckAll)="onCheckAll($event,tableRolePower.dataList)">
-                                <th name="title" type="link">名称</th>
-                                <th name="operationMap" type="list">功能权限</th>
+                            <thead class="data-thead" (onCheckAll)="onCheckAll($event,tableRolePower.dataList)">
+                                <th class="data-th" name="title" type="link">名称</th>
+                                <th class="data-th" name="operationMap" type="list">功能权限</th>
                             </thead>
-                            <tbody #tableRolePower [isShowPagiation]="false" [isAutomaticList]="false" [pageSize]="100" [dataList]="dataList"></tbody>
+                            <tbody class="data-tbody" #tableRolePower [isShowPagiation]="false" [isAutomaticList]="false" [pageSize]="100" [dataList]="dataList"></tbody>
                         </data-table>
                     </div>
                 </div>
                 <data-modal #funModal [title]="'功能权限'" (onModalSave)="onModalSave(tablePower.dataList)">
                     <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
-                        <thead (onCheckAll)="onCheckAll($event,tablePower.dataList)">
-                            <th name="title" type="link">名称</th>
-                            <th name="checkboxList" type="checkboxList">功能权限</th>
+                        <thead class="data-thead" (onCheckAll)="onCheckAll($event,tablePower.dataList)">
+                            <th class="data-th" name="title" type="link">名称</th>
+                            <th class="data-th" name="checkboxList" type="checkboxList">功能权限</th>
                         </thead>
-                        <tbody #tablePower [isShowPagiation]="false" 
+                        <tbody class="data-tbody" #tablePower [isShowPagiation]="false" 
                             [isAutomaticList]="false" 
                             [pageSize]="100" [dataList]="powerList"></tbody>
                     </data-table>

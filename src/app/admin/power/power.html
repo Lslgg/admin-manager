@@ -31,12 +31,12 @@
 
         <data-modal #lgModal [title]="'菜单列表'" (onModalSave)="onModalSave(tableMenu.dataList,tablePower)">
             <data-table [modlueName]="'Menu'" [isSearch]="false" [conditionList]="menuCondition" plane-body>
-                <thead (onCheckAll)="onCheckAll($event,tableMenu.dataList)">
-                    <th name="title" type="link">名称</th>
-                    <th name="url">Url</th>
-                    <th name="isValid" type="state">状态</th>
+                <thead class="data-thead" (onCheckAll)="onCheckAll($event,tableMenu.dataList)">
+                    <th class="data-th" name="title" type="link">名称</th>
+                    <th class="data-th" name="url">Url</th>
+                    <th class="data-th" name="isValid" type="state">状态</th>
                 </thead>
-                <tbody #tableMenu [isShowPagiation]="false" [pageSize]="100"></tbody>
+                <tbody class="data-tbody" #tableMenu [isShowPagiation]="false" [pageSize]="100"></tbody>
             </data-table>
         </data-modal>
 
@@ -58,13 +58,13 @@
     </div>
 
     <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
-        <thead (onCheckAll)="onCheckAll($event,tablePower.dataList)">
-            <th name="title" type="link">名称</th>
-            <th name="url">Url</th>
-            <th name="isValid" type="state">状态</th>
-            <th name="#" type="operation">操作</th>
+        <thead class="data-thead" (onCheckAll)="onCheckAll($event,tablePower.dataList)">
+            <th class="data-th" name="title" type="link">名称</th>
+            <th class="data-th" name="url">Url</th>
+            <th class="data-th" name="isValid" type="state">状态</th>
+            <th class="data-th" name="#" type="operation">操作</th>
         </thead>
-        <tbody #tablePower operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal,tablePower.dataList);"></tbody>
+        <tbody class="data-tbody" #tablePower operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal,tablePower.dataList);"></tbody>
     </data-table>
 
 </template-panel-table>

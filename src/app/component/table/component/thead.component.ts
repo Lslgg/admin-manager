@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild,Output, EventEmitter,Input } from '@angular/core';
 
 @Component({
-    selector: 'thead',
+    selector: '.data-thead',
     styleUrls:['./table.css'],
     template: ` 
         <tr class="theadTr" #theadTr>
