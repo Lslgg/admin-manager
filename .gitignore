@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-
+/src/app/common/ParserManager.ts
 # dependencies
 /node_modules
 
@@ -40,5 +40,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-src/app/common/ParserManager.ts
+
 
