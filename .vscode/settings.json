@@ -11,7 +11,7 @@
         ".editorconfig":true,
         ".zshrc":true,
         "src/environments":true,
-        "src/app/common/ParserManager.ts":true,
+        // "src/app/common/ParserManager.ts":true,
         "src/tsconfig.spec.json":true,
         "data.rar":true
     }
