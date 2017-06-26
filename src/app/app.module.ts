@@ -10,7 +10,10 @@ import { AppRoutingModule } from './app.routing';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './admin/login/login.component';
 
-import { ParserManager } from './common/ParserManager';
+//git 的项目请用
+//import { ParserManager } from './common/ParserManager';
+
+import { ParserManager } from './common/Parser';
 import { CommonHttpApi } from './common/CommonHttpApi';
 import { AuthGuard } from './admin/common/server/auth-guard.service';
 
