@@ -6,6 +6,7 @@ import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';
 import { PowerRoutes, PowerComponentList } from './power/power.routing';
 import { PlayerRoutes, PlayerComponentList } from './player/player.routing';
+import { CardRoutes, CardComponentList } from './card/card.routing';
 import { NotFindPageComponent, NotPowerComponent } from '../component/404';
 
 
@@ -23,6 +24,9 @@ routeList = routeList.concat(MenuRoutes);
 routeList = routeList.concat(PowerRoutes);
 //玩家充值管理
 routeList = routeList.concat(PlayerRoutes);
+//房卡管理
+routeList = routeList.concat(CardRoutes);
+
 
 routeList = routeList.concat([
   { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
@@ -47,6 +51,7 @@ export const ComponentList = [
   MenuComponentList,
   PowerComponentList,
   PlayerComponentList,
+  CardComponentList,
   NotFindPageComponent,
   NotPowerComponent
 ]

@@ -98,11 +98,12 @@ export class TbodyComponent implements OnInit {
             this.tbs.Parse.pages.size = this.pageSize;
             this.tbs.Parse.pages.name = this.moduleName;
             this.tbs.Parse.pages.coditions = this.conditionList;
-            this.dataList = [];
+            let oldDataList = [];
             this.tbs.getDataList(this.tbs.Parse.pages).then(result => {
                 result.list.forEach(p => {
-                    this.dataList.push(Object.assign(p, { isCheck: false }));
+                    oldDataList.push(Object.assign(p, { isCheck: false }));
                 })
+                this.dataList=oldDataList;
                 this.pageCount = result.count;
             })
         }

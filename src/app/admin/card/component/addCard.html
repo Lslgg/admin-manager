@@ -1,0 +1,9 @@
+<template-panel-form [Title]="'添加房卡'">
+    <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)" plane-body>
+        <form-item [name]="'username'" [title]="'姓名2'" [type]="'text'"></form-item>
+        <form-item [name]="'card'" [title]="'现在数量'" [type]="'text'"></form-item>
+        <form-item [name]="'addCard'" [title]="'添加数量(正数加负数减)'" [type]="'number'">
+            <form-validator [type]="'required'" [title]="'请输入房卡数量'"></form-validator>
+        </form-item>
+    </data-form>
+</template-panel-form>

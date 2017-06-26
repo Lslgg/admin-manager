@@ -56,6 +56,10 @@ export class AddPlayerComponent implements OnInit {
 
     onSubmit(info: object) {
         let carNum=info["addCardNum"];
-        this.playerService.upInfo(this.player.id,carNum,"")
+        this.playerService.upInfo(this.player.id,carNum,
+            this.player.name).then(success=>{
+            alert(success?"充值成功！":"充值失败！");
+            this.router.navigate(['../admin/player']);
+        });
     }
 }

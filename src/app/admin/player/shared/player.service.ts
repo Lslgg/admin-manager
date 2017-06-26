@@ -68,7 +68,7 @@ export class PlayerService {
 		return promise;
 	}
 
-	upInfo(id: string, card: number, username: string): Promise<Player> {
+	upInfo(id: string, card: number, username: string): Promise<boolean> {
 		let promise = new Promise((resolve, reject) => {
 			if (card <= 0) { resolve(false); return; }
 
@@ -85,7 +85,8 @@ export class PlayerService {
 					let info = JSON.parse(result);
 					if (info.error_code == 0) {
 						//添加给用户添房卡日志
-						let cardLog = this.setCardLog(currentUserName, currentId, "添房卡", card, 2, username, id);
+						let cardLog = this.setCardLog(currentUserName, currentId, "添房卡", 
+							card, 2, username, id.toString());
 						this.parseServer.add(cardLog);
 						resolve(info.error_code == 0);
 					}
@@ -95,11 +96,12 @@ export class PlayerService {
 			this.parseServer.Parse.Cloud.run('updateUserCard', { objectId: currentId, card: currentUserCard })
 				.then((result) => {
 					//添加自己的减房卡日志
-					let cardLog = this.setCardLog(currentUserName, currentId, "减房卡", currentUserCard, 1, currentUserName, currentId);
+					let cardLog = this.setCardLog(currentUserName, currentId, "减房卡", 
+						currentUserCard, 1, currentUserName, currentId);
 					this.parseServer.add(cardLog);
 					resolve(true);
 			});
-			
+
 		});
 
 		return promise;
