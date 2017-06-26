@@ -6,6 +6,8 @@ import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';
 import { PowerRoutes,PowerComponentList } from './power/power.routing';
 import { PlayerRoutes, PlayerComponentList } from './player/player.routing';
+import { NotFindPageComponent, NotPowerComponent } from '../component/404';
+
 
 export var routeList: Routes = [];
 
@@ -21,6 +23,12 @@ routeList = routeList.concat(MenuRoutes);
 routeList = routeList.concat(PowerRoutes);
 //玩家充值管理
 routeList = routeList.concat(PlayerRoutes);
+
+routeList = routeList.concat([
+   { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
+   { path: '**', component: NotFindPageComponent, data: { title: '没有发现页面', module: 'none', power: "none" } },
+   
+]);
 
 
 @NgModule({
@@ -38,5 +46,7 @@ export const ComponentList = [
   RoleComponentList,
   MenuComponentList,
   PowerComponentList,
-  PlayerComponentList
+  PlayerComponentList,
+  NotFindPageComponent,
+  NotPowerComponent
 ]

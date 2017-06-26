@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
     parseServer: ParserServer;
 
-    constructor(@Inject("parse") parse,
+    constructor(@Inject("parseManager") parse,
         private router: Router) {
         this.parseServer = parse;
     }
@@ -28,6 +28,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             var urlData = route.data;
             let url = urlData["module"];
             let power = urlData["power"];
+            //notPower 没用权限 ，allpower 不用权限
             if (url == "index" || url == "notPower" || url=="allpower") {
                 resolve(true);
                 return;
@@ -52,6 +53,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         });
 
         return promise;
+        //return true;
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
