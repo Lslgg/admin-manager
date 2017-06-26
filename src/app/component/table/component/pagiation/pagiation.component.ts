@@ -11,8 +11,9 @@ export class PagiationComponent implements OnInit {
     @Input() pageCount: number = 0;
 
     @Input() pageSize: number = 10;
-
-    @Input() maxPage: number = 5;
+    
+    //最大显示多少页码
+    @Input() maxPage: number = 8;
 
     @Output() ongetPage = new EventEmitter<number>();
 

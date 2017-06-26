@@ -55,6 +55,7 @@ export class AddPlayerComponent implements OnInit {
     }
 
     onSubmit(info: object) {
-        console.log(info["addCardNum"]);
+        let carNum=info["addCardNum"];
+        this.playerService.upInfo(this.player.id,carNum,"")
     }
 }
