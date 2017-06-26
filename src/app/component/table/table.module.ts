@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatepickerModule } from 'angular2-material-datepicker';
+
 import { TableService } from './shared/table.service'
 
 import {
@@ -23,7 +25,7 @@ let commonList = [
 ];
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule,DatepickerModule],
     exports: [commonList],
     declarations: [commonList],
     providers: [TableService],

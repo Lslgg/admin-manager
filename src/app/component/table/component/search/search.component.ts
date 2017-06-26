@@ -14,7 +14,11 @@ export class SearchComponent implements OnInit {
 
     @Input() type: string;
 
+    @Input() value:string|number|Date|boolean;
+
     @Input() condition:string='=';
+
+    @Input() valueType:string|number|Date|boolean;
 
     @Input() dataList:Array<{key:string,value:string}>=[];
 

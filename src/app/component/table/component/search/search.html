@@ -2,14 +2,18 @@
     <label class="form-control-label" for="hf-email">{{title}}:</label>
     <ng-container [ngSwitch]="type">
         <ng-container *ngSwitchCase="'select'">
-            <select class="form-control {{name}}" name="{{name}}" id="{{name}}" >
+            <select class="form-control {{name}}" name="{{name}}" id="{{name}}">
                 <ng-container *ngFor="let item of dataList">
                     <option value="{{item.key}}">{{item.value}}</option>
                 </ng-container>
             </select>
         </ng-container>
+        <ng-container *ngSwitchCase="'date'">
+            <material-datepicker [dateFormat]="'YYYY-MM-DD'" [ngClass]="name" 
+                id="{{name}}" [(date)]="value" placeholder=""></material-datepicker>
+        </ng-container>
         <ng-container *ngSwitchDefault>
             <input class="form-control {{name}}" id="{{name}}" name="{{name}}" placeholder="">
-        </ng-container> 
+        </ng-container>
     </ng-container>
 </div>

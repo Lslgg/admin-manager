@@ -1,6 +1,6 @@
 <template-panel-table [Title]="'权限管理列表'" [showOpeation]="false">
 
-    <div class="form-group" plane-body>
+    <div class="form-group" body>
 
         <div class="input-group">
             <button class="btn btn-primary" type="button" data-toggle="modal" (click)="addModal.show()"><i class="fa fa-plus"></i> 添加</button>
@@ -30,7 +30,7 @@
         </data-modal>
 
         <data-modal #lgModal [title]="'菜单列表'" (onModalSave)="onModalSave(tableMenu.dataList,tablePower)">
-            <data-table [modlueName]="'Menu'" [isSearch]="false" [conditionList]="menuCondition" plane-body>
+            <data-table [modlueName]="'Menu'" [isSearch]="false" [conditionList]="menuCondition" body>
                 <thead class="data-thead" (onCheckAll)="onCheckAll($event,tableMenu.dataList)">
                     <th class="data-th" name="title" type="link">名称</th>
                     <th class="data-th" name="url">Url</th>
@@ -57,7 +57,7 @@
 
     </div>
 
-    <data-table [modlueName]="'power'" [isSearch]="false" plane-body>
+    <data-table [modlueName]="'power'" [isSearch]="false" body>
         <thead class="data-thead" (onCheckAll)="onCheckAll($event,tablePower.dataList)">
             <th class="data-th" name="title" type="link">名称</th>
             <th class="data-th" name="url">Url</th>

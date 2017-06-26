@@ -52,11 +52,27 @@ export class DataTableComponent implements OnInit {
         for (var index = 0; index < length; index++) {
             let self = elementList[index];
             let field = self.getAttribute("ng-reflect-name");
+            let valueType = self.getAttribute("ng-reflect-value-type");
             let condition = self.getAttribute("ng-reflect-condition");
-            let inputObj = self.getElementsByClassName(field);
-            let value = inputObj[0].value;
+            let info = self.getElementsByClassName(field);
+            let value = info[0].value;
+            
+            if(valueType=="date"){ 
+                info=info[0].querySelectorAll("input");
+                value =new Date(info[0].value);
+                console.log(value);
+            }
+
+            if(valueType=="number"){
+                if(value!=""){
+                    value=parseInt(value);
+                }
+            }
+
             list.push({ field, value, condition });
         }
+        
+        console.log(list);
         
         this.tbody.conditionList=list;
         if(this.tbody.IsAutomaticList){

@@ -9,7 +9,7 @@ import { CommonModule as SystemCommonModule } from '@angular/common';
 //third
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { DatepickerModule } from 'angular2-material-datepicker';
 //admin
 import { HeaderComponent, FooterComponent, SidebarComponent } from './layouts';
 import { AdminComponent } from './admin.component';
@@ -42,6 +42,7 @@ let directive=[
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    DatepickerModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     AdminRoutingModule,

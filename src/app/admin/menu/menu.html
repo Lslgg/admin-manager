@@ -1,7 +1,4 @@
 <template-panel-form>
-  <div plane-body>
-    <data-tree [treeList]="treeList" [isOperation]="true" (onGetSubTree)="onGetSubTree($event)"
-    (onAddTree)="onAddTree($event)" (onDeleteTree)="onDeleteTree($event)" 
-    (onUpdateTree)="onUpdateTree($event)"></data-tree>
-  </div>
+  <data-tree [treeList]="treeList" [isOperation]="true" (onGetSubTree)="onGetSubTree($event)" (onAddTree)="onAddTree($event)"
+    (onDeleteTree)="onDeleteTree($event)" (onUpdateTree)="onUpdateTree($event)" body></data-tree>
 </template-panel-form>

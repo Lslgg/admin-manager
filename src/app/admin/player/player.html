@@ -1,5 +1,5 @@
 <template-panel-table [Title]="'玩家列表'" (onAdd)="onAdd($event)">
-       <data-table [modlueName]="'Player'" [isSearch]="true" (onSearch)="onSearch($event)" plane-body>
+       <data-table [modlueName]="'Player'" [isSearch]="true" (onSearch)="onSearch($event)" body>
 
         <search-item [name]="'id'" [title]="'玩家ID'" 
             [type]="'text'" [condition]="'='" class="col-md-6"></search-item>

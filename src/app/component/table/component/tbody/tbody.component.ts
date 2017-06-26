@@ -104,7 +104,8 @@ export class TbodyComponent implements OnInit {
                     oldDataList.push(Object.assign(p, { isCheck: false }));
                 })
                 this.dataList=oldDataList;
-                this.pageCount = result.count;
+                //为了查找表格能重新加载一次
+                this.pageCount = result.count==0?-1:result.count;
             })
         }
     }

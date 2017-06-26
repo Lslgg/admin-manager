@@ -1,0 +1,32 @@
+<template-panel-table [Title]="'房卡日志列表'">
+    <data-table [modlueName]="'CardLog'" body>
+
+        <search-item [name]="'unserName'" [title]="'用户名称'" [type]="'text'" [condition]="'='" class="col-md-4"></search-item>
+
+        <search-item [name]="'targetName'" [title]="'目标用户'" [type]="'text'" [condition]="'='" class="col-md-4"></search-item>
+
+        <search-item [name]="'type'" [title]="'操作类型'" [type]="'select'"  [condition]="'='"
+            [dataList]="[{key:'',value:'--全部--'},{key:'添房卡',value:'添房卡'},{key:'减房卡',value:'减房卡'}]" class="col-md-4"></search-item>
+
+        <search-item [name]="'createdAt'" [title]="'开始时间'" [type]="'date'" [value]="startDate" 
+            [condition]="'>='" [valueType]="'date'" class="col-md-4"></search-item>
+
+        <search-item [name]="'createdAt'" [title]="'结束时间'" [type]="'date'" [value]="stopDate"
+            [condition]="'<='" [valueType]="'date'" class="col-md-4"></search-item>
+
+        <search-item [name]="'userType'" [title]="'用户类型'" [type]="'select'"  [condition]="'='"
+            [dataList]="[{key:'',value:'--全部--'},{key:'1',value:'用户'},{key:'2',value:'玩家'}]"
+            [valueType]="'number'" class="col-md-4"></search-item> 
+
+        <thead class="data-thead">
+            <th class="data-th" name="userName">用户名</th> 
+            <th class="data-th" name="type">类型</th> 
+            <th class="data-th" name="card">房卡数量</th>
+            <th class="data-th" name="targetName">目标用户</th> 
+            <th class="data-th" name="createdAt" type="date">日期</th> 
+            <th class="data-th" name="#" type="operation">操作</th>
+        </thead>
+
+        <tbody class="data-tbody" operation="删除"></tbody>
+    </data-table>
+</template-panel-table>
