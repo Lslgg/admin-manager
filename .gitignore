@@ -32,7 +32,7 @@
 npm-debug.log
 testem.log
 testem.log
-src/app/common/ParserManager.ts
+/src/app/common/ParserManager.ts
 
 # e2e
 /e2e/*.js
