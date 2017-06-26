@@ -1,0 +1,10 @@
+<template-panel-form [Title]="'添加用户房卡'">
+     <data-form [formInfo]="playerForm" (onSubmit)="onSubmit($event)" plane-body>
+        <form-item [name]="'name'" [title]="'姓名'" [type]="'text'"></form-item>
+        <form-item [name]="'cardNum'" [title]="'现在数量'" [type]="'text'"></form-item>
+        <form-item [name]="'addCardNum'" [title]="'添加数量'" [type]="'number'">
+            <form-validator [type]="'required'" [title]="'请输入房卡数理'"></form-validator>
+            <form-validator [type]="'isNumber'" [title]="'房卡数理不能小于1'"></form-validator>
+        </form-item>
+    </data-form>
+</template-panel-form>

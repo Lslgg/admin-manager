@@ -8,15 +8,15 @@ declare var Parse: any;
 
 type Tclass<T> = { new (): T };
 
-type ConditionList = Array<{ field: string, value: string|number|boolean, condition: string }>
+type ConditionList = Array<{ field: string, value: string | number | boolean, condition: string }>
 
 type OrderList = Array<{ field: string, orderType: string }>;
 
 //Output事件参数
 type IdType = { id: string, type: string };
-type IdTypeObject = { id: string, type: string, info:object };
+type IdTypeObject = { id: string, type: string, info: object };
 
-type CheckboxList= { value:string,name:string,isCheck:boolean };
+type CheckboxList = { value: string, name: string, isCheck: boolean };
 
 
 /**
@@ -121,4 +121,154 @@ interface ParserServer {
     setParseObj(tableName: string): any;
 }
 
+/**
+ * Parse server Manager
+ * 对应parser cloud 里面的js
+ */
+interface CommonApi {
+    /**
+  * 总共用户
+  * 参数:void
+  * 返回:num int 用户数
+  */
+    USER_TOTAL: string;
+
+    /**
+     * 在线用户
+     * 参数:void
+     * 返回:num int 在线用户 
+     */
+    ONLINE_USER: string;
+
+    /**
+     * 新用户
+     * 参数:void
+     * 返回: num	int	新用户数
+     */
+    USER_NEW: string;
+
+    /**
+     * 用户信息
+     * 参数:userId	是	int	用户id 必需
+     * 返回: 用户 Json
+     */
+    USER_INFO: string;
+
+    /**
+     * 封号
+     * 参数:userId	是	int	用户id
+     * flag	是	bool	禁号和解禁,true禁号，false解禁
+     * 返回: 用户 Json
+     */
+    USER_FORBID: string;
+
+    /**
+     * 用户列表
+     * 参数:page	是	int	页数
+     *  pageSize	是	int	每页用户数 默认15，最大100
+     * 返回: 用户列表 Json
+     */
+    USER_LIST: string;
+
+    /**
+     * 充卡
+     * 参数:userId	是	int	用户id
+     *      change	是	int	改变数，正的充卡，负的扣卡
+     * 返回: 用户 Json
+     */
+    CARD_CHANGE: string;
+
+    /**
+     * 今天使用量
+     * 参数:void
+     * 返回: Json
+     */
+    CARD_TOTLE_USE: string;
+
+    /**
+     * 免房卡
+     * 参数:flag	是	bool	true 免房卡，false 需要房卡
+     * 返回: Json
+     */
+    CARD_FREE: string;
+
+    /**
+     * 是否需要房卡
+     * 参数:void
+     * 返回: Json
+     */
+    CARD_IS_FREE: string;
+
+    /**
+     * 审核
+     * 参数:flag	是	bool	true 审核，false 不审核
+     * 返回: Json
+     */
+    CARD_CHECK: string;
+
+    /**
+     * 是否审核
+     * 参数:flag	是	bool	true 审核，false 非审核
+     * 返回: Json
+     */
+    CARD_IS_CHECK: string;
+
+    /**
+     * 获取公告信息
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_NEWS: string;
+
+    /**
+      * 公告信息
+      * 参数:msg
+      * 返回: Json
+      */
+    GM_SET_NEWS: string;
+
+    /**
+     * 获取走马灯信息
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_NOTICE: string;
+
+    /**
+   * 走马灯信息
+   * 参数:msg
+   * 返回: Json
+   */
+    GM_SET_NOTICE: string;
+
+    /**
+     * 获取微信代理
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_TIP: string;
+
+    /**
+     * 微信代理
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_SET_TIP: string;
+
+    /**
+     * 获取版本号
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_VERSION: string;
+
+    /**
+     * 版本号
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_SET_VERSION: string;
+
+    GMAPI: string;
+}
 

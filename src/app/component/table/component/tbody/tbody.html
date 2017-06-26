@@ -4,7 +4,7 @@
 
             <ng-container *ngSwitchCase="'checkbox'">
                 <td>
-                    <input type="checkbox" name="checkbox" id="checkbox" [checked]="item.isCheck" 
+                    <input type="checkbox" name="checkbox" id="checkbox" [checked]="item['isCheck']" 
                         (change)="onchecked(item,checkbox.checked)" #checkbox>
                 </td>
             </ng-container>
@@ -45,7 +45,7 @@
 </tr>
 <tr *ngIf="isShowPagiation">
     <td [attr.colspan]="pagiztionColSpan">
-        <pagiation [pageCount]="pageCount" [pageSize]="pageSize" (ongetPage)="ongetPage($event)">
+        <pagiation [pageCount]="pageCount" [pageSize]="pageSize" (ongetPage)="getPage($event)">
         </pagiation>
     </td>
 </tr>

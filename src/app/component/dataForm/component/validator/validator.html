@@ -27,3 +27,9 @@
         {{title}}
     </div>
 </ng-container>
+
+<ng-container *ngIf="type=='isNumber'">
+    <div *ngIf="formInfo.get(name).errors?.isNumber" class="alert alert-danger validator-danger">
+        {{title}}
+    </div>
+</ng-container>

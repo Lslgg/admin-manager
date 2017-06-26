@@ -24,7 +24,7 @@
                                 <th class="data-th" name="title" type="link">名称</th>
                                 <th class="data-th" name="operationMap" type="list">功能权限</th>
                             </thead>
-                            <tbody class="data-tbody" #tableRolePower [isShowPagiation]="false" [isAutomaticList]="false" [pageSize]="100" [dataList]="dataList"></tbody>
+                            <tbody class="data-tbody" #tableRolePower [isShowPagiation]="false" [IsAutomaticList]="false" [pageSize]="100" [dataList]="dataList"></tbody>
                         </data-table>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                             <th class="data-th" name="title" type="link">名称</th>
                             <th class="data-th" name="checkboxList" type="checkboxList">功能权限</th>
                         </thead>
-                        <tbody class="data-tbody" #tablePower [isShowPagiation]="false" 
-                            [isAutomaticList]="false" 
-                            [pageSize]="100" [dataList]="powerList"></tbody>
+                        <tbody class="data-tbody" #tablePower
+                            [isShowPagiation]="false" [IsAutomaticList]="false" 
+                            [pageSize]="3" [dataList]="powerList"></tbody>
                     </data-table>
                 </data-modal>
             </div>

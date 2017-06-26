@@ -10,8 +10,8 @@ export class ParserManager implements ParserServer {
 
     constructor() {
         let parse = require("parse");
-        parse.initialize("myAppId");
-        parse.serverURL = 'http://211.149.219.127:1337/parse';
+        parse.initialize("webSite");
+        parse.serverURL = 'http://211.149.220.134:1337/parse';
         this.Parse = parse;
     }
 

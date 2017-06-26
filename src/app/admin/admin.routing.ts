@@ -5,7 +5,7 @@ import { UserRoutes, UserComponentList } from './user/user.routing';
 import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';
 import { PowerRoutes,PowerComponentList } from './power/power.routing';
-
+import { PlayerRoutes, PlayerComponentList } from './player/player.routing';
 
 export var routeList: Routes = [];
 
@@ -19,6 +19,8 @@ routeList = routeList.concat(RoleRoutes);
 routeList = routeList.concat(MenuRoutes);
 //权限管理
 routeList = routeList.concat(PowerRoutes);
+//玩家充值管理
+routeList = routeList.concat(PlayerRoutes);
 
 
 @NgModule({
@@ -35,5 +37,6 @@ export const ComponentList = [
   UserComponentList, 
   RoleComponentList,
   MenuComponentList,
-  PowerComponentList
+  PowerComponentList,
+  PlayerComponentList
 ]

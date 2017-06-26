@@ -43,6 +43,7 @@ export class DataTableComponent implements OnInit {
     }
 
     search() {
+       
         let elementList = this.headerViewChild.nativeElement.querySelectorAll("search-item");
         let length = elementList.length;
         
@@ -58,8 +59,10 @@ export class DataTableComponent implements OnInit {
         }
         
         this.tbody.conditionList=list;
+        if(this.tbody.IsAutomaticList){
+            this.tbody.getPage(1);
+        }
         
-        this.tbody.ongetPage(1);
         this.onSearch.emit(list);
     }
 }

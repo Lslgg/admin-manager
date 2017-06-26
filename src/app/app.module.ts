@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app.routing';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './admin/login/login.component';
 
-import { ParserManager } from './common/parserManager';
+import { ParserManager } from './common/ParserManager';
+import { CommonHttpApi } from './common/CommonHttpApi';
 import { AuthGuard } from './admin/common/server/auth-guard.service';
 
 
@@ -29,6 +30,7 @@ import { AuthGuard } from './admin/common/server/auth-guard.service';
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: 'parseManager', useClass: ParserManager },
+    { provide: 'commonApi', useClass: CommonHttpApi },
     AuthGuard
   ],
   bootstrap: [AppComponent]

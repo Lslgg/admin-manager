@@ -8,7 +8,7 @@
         "**/.DS_Store": true,
         "e2e":true,
         "node_modules":true,
-        ".editorconfig":true,
+        // ".editorconfig":true,
         ".zshrc":true,
         "src/environments":true,
         "src/tsconfig.spec.json":true

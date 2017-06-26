@@ -69,30 +69,32 @@ export class AddPowerComponent implements OnInit {
     }
 
     getRolePower(){
-        this.dataList=[];
         this.powerService.getRolePowerList(this.roleId).then(list=>{
             let operationMap = this.powerService.operationMap();
+            let oldList=[];
             list.forEach(val=>{
                Object.assign(val,{isCheck:false})
                val.operation.forEach(item=>{
 				    val.operationMap.push(operationMap.get(item));
                })
-                this.dataList.push(val); 
+                oldList.push(val); 
             })
+            this.dataList=oldList;
         });
     }
 
     getPowerList(){
         this.powerService.getPowerList().then(list=>{
-            this.powerList=[];
             let operationMap = this.powerService.operationMap();
+            var oldList=[];
             list.forEach(val=>{
                Object.assign(val,{isCheck:false})
                val.operation.forEach(item=>{
 				    val.checkboxList.push({value:item,name:operationMap.get(item),isCheck:true});
                })
-                this.powerList.push(val); 
+                oldList.push(val); 
             })
+            this.powerList=oldList;
         })
     }
 

@@ -64,7 +64,8 @@
             <th class="data-th" name="isValid" type="state">状态</th>
             <th class="data-th" name="#" type="operation">操作</th>
         </thead>
-        <tbody class="data-tbody" #tablePower operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" (onSetInfo)="onSetInfo($event,funModal,tablePower.dataList);"></tbody>
+        <tbody class="data-tbody" #tablePower operation="删除|功能权限" [isShowPagiation]="false" [pageSize]="100" 
+            (onSetInfo)="onSetInfo($event,funModal,tablePower.dataList);"></tbody>
     </data-table>
 
 </template-panel-table>

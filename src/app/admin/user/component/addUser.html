@@ -1,24 +1,22 @@
 <template-panel-form>
-    <div plane-body>
-        <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)">
-            <form-item [name]="'username'" [title]="'姓名'" [type]="'text'">
-                <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
-                <form-validator [type]="'minLength'" [value]="5" [title]="'最少5个字符'"></form-validator>
-                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
+    <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)" plane-body>
+        <form-item [name]="'username'" [title]="'姓名'" [type]="'text'">
+            <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+            <form-validator [type]="'minLength'" [value]="5" [title]="'最少5个字符'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
+        </form-item>
+        <form-item [name]="'roles'" [title]="'角色'" [type]="'select'" [dataList]="roleList">
+            <form-validator [type]="'required'" [title]="'请选择角色'"></form-validator>
+        </form-item>
+        <form-group [formInfo]="userForm" [name]="'pwdList'">
+            <form-item [name]="'password'" [title]="'密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
+                <form-validator [type]="'required'" [title]="'请输入密码'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="6" [title]="'最少6个字符'"></form-validator>
             </form-item>
-            <form-item [name]="'roles'" [title]="'角色'" [type]="'select'" [dataList]="roleList">
-                <form-validator [type]="'required'" [title]="'请选择角色'"></form-validator>
+            <form-item [name]="'passwordConfirm'" [title]="'确认密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
+                <form-validator [type]="'mismatch'" [title]="'请输入相同的密码！'"></form-validator>
             </form-item>
-            <form-group [formInfo]="userForm" [name]="'pwdList'">
-                 <form-item [name]="'password'" [title]="'密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
-                     <form-validator [type]="'required'" [title]="'请输入密码'"></form-validator>
-                     <form-validator [type]="'minLength'" [value]="6" [title]="'最少6个字符'"></form-validator>
-                 </form-item>
-                 <form-item [name]="'passwordConfirm'" [title]="'确认密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
-                     <form-validator [type]="'mismatch'" [title]="'请输入相同的密码！'"></form-validator>
-                 </form-item>
-                 <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'" [formInfo]="userForm['controls']['pwdList']"></form-item>
-            </form-group>
-        </data-form>
-    </div>
+            <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'" [formInfo]="userForm['controls']['pwdList']"></form-item>
+        </form-group>
+    </data-form>
 </template-panel-form>

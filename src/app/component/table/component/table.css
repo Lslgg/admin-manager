@@ -9,3 +9,9 @@
 .theadTr{
    background: #e4e5e6;
 }
+
+@media (max-width: 768px){
+  .pagination .page-link, .pagination-datatables li a, .pagination li a{
+      padding: 0.3rem 0.4rem
+  }
+}
