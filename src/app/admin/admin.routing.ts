@@ -4,7 +4,7 @@ import { IndexRoutes, IndexComponentList } from './index/';
 import { UserRoutes, UserComponentList } from './user/user.routing';
 import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';
-import { PowerRoutes,PowerComponentList } from './power/power.routing';
+import { PowerRoutes, PowerComponentList } from './power/power.routing';
 import { PlayerRoutes, PlayerComponentList } from './player/player.routing';
 import { NotFindPageComponent, NotPowerComponent } from '../component/404';
 
@@ -25,9 +25,9 @@ routeList = routeList.concat(PowerRoutes);
 routeList = routeList.concat(PlayerRoutes);
 
 routeList = routeList.concat([
-   { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
-   { path: '**', component: NotFindPageComponent, data: { title: '没有发现页面', module: 'none', power: "none" } },
-   
+  { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
+  { path: '**', component: NotFindPageComponent, data: { title: '404', module: '404', power: "SHOW" } },
+
 ]);
 
 
@@ -41,8 +41,8 @@ export class AdminRoutingModule { }
 
 //一定要将路由加载的模块导出到admin.module模块
 export const ComponentList = [
-  IndexComponentList, 
-  UserComponentList, 
+  IndexComponentList,
+  UserComponentList,
   RoleComponentList,
   MenuComponentList,
   PowerComponentList,

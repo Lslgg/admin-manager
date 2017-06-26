@@ -32,7 +32,6 @@
 npm-debug.log
 testem.log
 testem.log
-/src/app/common/ParserManager.ts
 
 # e2e
 /e2e/*.js
@@ -41,3 +40,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/common/ParserManager.ts
+

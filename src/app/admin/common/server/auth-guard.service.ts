@@ -36,6 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
             var isSuccess = false;
             this.getRolrPowerList().then(list => {
+                console.log(list);
                 list.forEach(val => {
                     var index = val.operation.indexOf(power);
                     if (val.url == url && index > -1) {
