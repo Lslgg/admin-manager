@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { User, CardLog } from './user.model'
+import { User } from './user.model'
 
 @Injectable()
 export class UserService {
@@ -79,39 +79,6 @@ export class UserService {
                 (result) => { resolve(result); }
             );
         });
-        return promise;
-    }
-
-    upUserCard(id: string, card: Number, username: string): Promise<boolean> {
-
-        let promise = new Promise<boolean>((resolve, reject) => {
-            let currentUserCard = (-(card));
-            let currentUser = this.Parse.Parse.User.current();
-            let currentId = currentUser.id;
-            let currentUserName = currentUser.get("username");
-
-            //修改用户的房卡
-            this.Parse.Parse.Cloud.run('updateUserCard', { objectId: id, card: card }).then(
-                (result) => { resolve(result); }
-            );
-
-            //修改自己的房卡 admin 不用减少自己的房卡
-            if (username == "admin") {
-                resolve(true);
-            } else {
-                this.Parse.Parse.Cloud.run('updateUserCard', { objectId: currentId, card: currentUserCard })
-                    .then((result) => { resolve(result); });
-            }
-
-            // admin 不用写减少房卡日志
-            if (username == "admin") {
-                reject(true);
-            } else {
-
-            }
-
-        });
-
         return promise;
     }
 

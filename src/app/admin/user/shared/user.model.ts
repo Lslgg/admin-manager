@@ -18,7 +18,3 @@ export class User{
     public isDel:boolean=false;
     public isValid:boolean=true;
 }
-
-export class CardLog{
-
-}
