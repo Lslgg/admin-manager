@@ -1,16 +1,14 @@
 <template-panel-form>
-    <div body>
-        <data-form [formInfo]="roleForm" (onSubmit)="onSubmit($event)">
-            <form-item [name]="'roleName'" [title]="'角色名'" [type]="'text'"> 
-                <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
-                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多32个字符'"></form-validator>
-            </form-item>
-            <form-item [name]="'name'" [title]="'标识'" [type]="'text'">
-                <form-validator [type]="'required'" [title]="'请输入标识'"></form-validator>
-                <form-validator [type]="'maxLength'" [value]="12" [title]="'最多32个字符'"></form-validator>
-            </form-item>
-            <form-item [name]="'desc'" [title]="'说明'" [type]="'text'"></form-item>
-            <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
-        </data-form>
-    </div>
+    <data-form [formInfo]="roleForm" (onSubmit)="onSubmit($event)" body>
+        <form-item [name]="'roleName'" [title]="'角色名'">
+            <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="12" [title]="'最多32个字符'"></form-validator>
+        </form-item>
+        <form-item [name]="'name'" [title]="'标识'" [type]="'text'">
+            <form-validator [type]="'required'" [title]="'请输入标识'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="12" [title]="'最多32个字符'"></form-validator>
+        </form-item>
+        <form-item [name]="'desc'" [title]="'说明'"></form-item>
+        <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
+    </data-form>
 </template-panel-form>

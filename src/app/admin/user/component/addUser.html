@@ -1,6 +1,6 @@
 <template-panel-form>
     <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)" body>
-        <form-item [name]="'username'" [title]="'姓名'" [type]="'text'">
+        <form-item [name]="'username'" [title]="'姓名'">
             <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
             <form-validator [type]="'minLength'" [value]="5" [title]="'最少5个字符'"></form-validator>
             <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>

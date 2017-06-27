@@ -19,7 +19,7 @@ export class FormItemComponent implements OnInit {
 
     @Input() title: string;
 
-    @Input() type: string;
+    @Input() type: string="text";
 
     @Input() formInfo: FormGroup;
 
