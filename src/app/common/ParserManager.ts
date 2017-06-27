@@ -10,8 +10,8 @@ export class ParserManager implements ParserServer {
 
     constructor() {
         let parse = require("parse");
-        parse.initialize("xxxxxx");
-        parse.serverURL = 'http://xxx.xxx.xxx/parse';
+        parse.initialize("webSite");
+        parse.serverURL = 'http://211.149.220.134:1337/parse';
         this.Parse = parse; 
     }
 
@@ -60,6 +60,27 @@ export class ParserManager implements ParserServer {
                     });
                 }
             })
+        });
+        return promise;
+    }
+
+     /*
+    * 根据条件删除
+    */
+    public deleteAll(tableName: string, conditions?: ConditionList): Promise<boolean> {
+        var query = this.setQuery(tableName);
+        let promise = new Promise<boolean>((resolve, reject) => {
+            if(conditions){
+                query = this.setCondition(query, conditions);
+            }
+            query.find({
+                success: (result) => {
+                    this.Parse.Object.destroyAll(result, {
+                        success: ()=> { resolve(true) },
+                        error: (error)=> {reject(error) }})
+                },
+                error: (error) => { console.log(error); reject(error) }
+            });
         });
         return promise;
     }
@@ -125,7 +146,7 @@ export class ParserManager implements ParserServer {
      * @param query 查询对象
      * @param conditionList 要过滤的条件
      */
-    private setCondition(query: any, conditionList: ConditionList) {
+    public setCondition(query: any, conditionList: ConditionList) {
         let mapList = this.conditionStr();
         conditionList.forEach(info => {
             if (info.value != "") {
@@ -142,7 +163,7 @@ export class ParserManager implements ParserServer {
      * @param query 设置排序
      * @param orders 排序的字段
      */
-    private setOrder(query: any, orders: OrderList) {
+    public setOrder(query: any, orders: OrderList) {
         orders.forEach(info => {
             if (info.orderType == "desc") {
                 query.descending(info.field)
@@ -156,6 +177,9 @@ export class ParserManager implements ParserServer {
         return query;
     }
 
+    /**
+     * 
+     */
     private conditionStr(): Map<string, string> {
         var list: Map<string, string> = new Map<string, string>();
         list.set("=", "equalTo");
@@ -189,6 +213,37 @@ export class ParserManager implements ParserServer {
         return promise;
     }
 
+    /*
+     * 条件查找
+     */
+    public getLists<T>(tableName: string, conditions?: ConditionList,orders?:OrderList,tClass?: Tclass<T>): Promise<Array<T>>{
+        var query = this.setQuery(tableName);
+        let promise = new Promise<Array<T>>((resolve, reject) => {
+            if(conditions){
+                query = this.setCondition(query, conditions);
+            }
+            if(orders){
+                query = this.setOrder(query,orders);
+            }
+            //默认只返回100条数据,所以先查找有多少数据
+             query.count({
+                success: (count: number) => {
+                     query.limit(count);
+                     query.find({
+                        success: (result: Array<any>) => {
+                            let list = this.setList(result, tClass);
+                            resolve(list);
+                        },
+                        error: (error) => { console.log(error); reject(error) }
+                    });
+                 },
+                error: (error) => { return reject(error) }
+            });
+           
+        });
+
+        return promise;
+    }
     /*
     * 查找总数
     */

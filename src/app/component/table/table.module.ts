@@ -8,7 +8,7 @@ import {
     DataTableComponent,
     TheadComponent,
     TbodyComponent,
-    TfooterComponent,
+    TfootComponent,
     PagiationComponent,
     TbodyTdComponent,
     SearchComponent,
@@ -18,7 +18,7 @@ let commonList = [
     DataTableComponent,
     TheadComponent,
     TbodyComponent,
-    TfooterComponent,
+    TfootComponent,
     PagiationComponent,
     TbodyTdComponent,
     SearchComponent

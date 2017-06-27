@@ -33,6 +33,16 @@ export class DataTableComponent implements OnInit {
     ngAfterViewInit() {
         setTimeout(() => {
             this.tbody.rowNameList = this.thead.rowList;
+            //如果是自己查找设置统计
+            if(this.tbody.IsAutomaticList){
+                var list=this.thead.rowList.filter(p=>p.type=="total");
+                var totals:Array<{name:string,title:string,total:number}>=[];
+                list.forEach(p=>{
+                    totals.push({name:p.name,title:p.title,total:0})
+                })
+                this.tbody.setTotal(totals);
+                this.tbody.getTotal();
+            }
             this.tbody.pagiztionColSpan=this.thead.rowList.length;
         }, 1);
     }
@@ -57,10 +67,10 @@ export class DataTableComponent implements OnInit {
             let info = self.getElementsByClassName(field);
             let value = info[0].value;
             
+            //查询数据时数据类型不对，查不到数据！
             if(valueType=="date"){ 
                 info=info[0].querySelectorAll("input");
                 value =new Date(info[0].value);
-                console.log(value);
             }
 
             if(valueType=="number"){
@@ -77,6 +87,7 @@ export class DataTableComponent implements OnInit {
         this.tbody.conditionList=list;
         if(this.tbody.IsAutomaticList){
             this.tbody.getPage(1);
+            this.tbody.getTotal();
         }
         
         this.onSearch.emit(list);

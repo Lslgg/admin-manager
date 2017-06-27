@@ -13,7 +13,16 @@ export class PanelTableComponent {
 
     @Output() onAdd = new EventEmitter<number>();
 
+    @Output() onDelete = new EventEmitter();
+    
+
     onAddInfo(){
         this.onAdd.emit();
+    }
+
+    delete(){
+        if(confirm("是否真的要删除！")){
+            this.onDelete.emit();
+        }
     }
 }

@@ -29,10 +29,13 @@ export class TbodyComponent implements OnInit {
     //是否显示分页
     @Input() isShowPagiation: boolean = true;
 
+    //是否显示统计
+    @Input() isShowTotal:boolean=false;
+
     //分页大小
     @Input() pageSize: number = 10;
 
-      //数据总数
+    //数据总数
     @Input() pageCount: number=0;
 
     //下一页事件
@@ -57,7 +60,8 @@ export class TbodyComponent implements OnInit {
     @ContentChild(PagiationComponent) Pagiation: PagiationComponent;
 
     //表格头部信息根据这信息来处理表格
-    rowNameList: Array<{ name: string, type: string, columnSpan: number, rowsetSpan: number }> = [];
+    rowNameList: Array<{ name: string, title:string, 
+            type: string, columnSpan: number, rowsetSpan: number }> = [];
 
     //分页行跨列
     pagiztionColSpan: number = 1;
@@ -70,6 +74,8 @@ export class TbodyComponent implements OnInit {
 
     //分页数据条件
     conditionList: ConditionList = [];
+
+    totalList:Array<{name:string,title:string,total:number}>;
 
     constructor(private tbs: TableService, public elementRef: ElementRef) {
         		
@@ -89,6 +95,15 @@ export class TbodyComponent implements OnInit {
         }
     }
 
+
+    setTotal(list:any){
+       this.totalList=list;
+    }
+
+    getTotal(){
+        this.tbs.getDataTotal(this.moduleName,this.conditionList,this.totalList)
+    }
+
     //分页
     getPage(pageIndex: number) {
         this.ongetPage.emit(pageIndex);
@@ -104,6 +119,7 @@ export class TbodyComponent implements OnInit {
                     oldDataList.push(Object.assign(p, { isCheck: false }));
                 })
                 this.dataList=oldDataList;
+
                 //为了查找表格能重新加载一次
                 this.pageCount = result.count==0?1:result.count;
             })

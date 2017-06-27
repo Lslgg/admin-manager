@@ -48,7 +48,7 @@ export class PowerComponent implements OnInit {
                     this.powerService.delete(val["id"]).then(succes => {
                         if(isTip){
 							alert("删除成功！");
-							tablePower.ongetPage(1);
+							tablePower.getPage(1);
 						}
                         isTip=false;
                     })
@@ -70,7 +70,7 @@ export class PowerComponent implements OnInit {
 		var list=this.setPowerByMenu(naveMenulist);
         this.powerService.saveInfo(list).then(success => {
             alert(success ? "添加成功！" : "添加失败！");
-			tablePower.ongetPage(1); 
+			tablePower.getPage(1); 
         })
 	}
 
@@ -101,7 +101,7 @@ export class PowerComponent implements OnInit {
         power.operation = ["SHOW", "ADD", "UPDATE", "DELETE"];
         this.powerService.saveInfo([power]).then(success => {
 			alert(success ? "成功！" : "失败！");
-			tablePower.ongetPage(1);
+			tablePower.getPage(1);
 		});
 	}
 

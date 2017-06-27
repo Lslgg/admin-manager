@@ -43,9 +43,19 @@
         </ng-container>
     </ng-container>
 </tr>
+<tr *ngIf="isShowTotal">
+ <td [attr.colspan]="pagiztionColSpan" style="text-align:center">
+     合计：共 <span class="badge badge-danger"> {{pageCount}} </span> 记录,
+     <ng-container *ngFor="let total of totalList">
+         {{total.title}}:<span class="badge badge-danger"> {{total.total}} </span>
+     </ng-container>
+    <ng-content select=".data-total"></ng-content>
+ </td>
+</tr>
 <tr *ngIf="isShowPagiation">
     <td [attr.colspan]="pagiztionColSpan">
         <pagiation [pageCount]="pageCount" [pageSize]="pageSize" (ongetPage)="getPage($event)">
         </pagiation>
     </td>
 </tr>
+

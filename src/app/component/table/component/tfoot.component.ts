@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: '.data-tfooter',
+    selector: '.data-tfoot',
     template:`  
-    
+      
     `
 })
 
-export class TfooterComponent implements OnInit {
+export class TfootComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

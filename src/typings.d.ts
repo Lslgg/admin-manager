@@ -8,7 +8,10 @@ declare var Parse: any;
 
 type Tclass<T> = { new (): T };
 
-type ConditionList = Array<{ field: string, value: string | number | boolean, condition: string }>
+type ConditionList = Array<{ 
+    field: string, 
+    value: string | number | boolean | Array<any>, 
+    condition: string }>
 
 type OrderList = Array<{ field: string, orderType: string }>;
 
@@ -69,6 +72,14 @@ interface ParserServer {
     delete(id: string, tableName: string): Promise<boolean>;
 
     /**
+     * 批理删除
+     * @param tableName 集合名字
+     * @param conditions 查询条件
+     * @return ture or false     
+     */
+    deleteAll(tableName: string, conditions?: ConditionList): Promise<boolean>
+
+    /**
      * 根据ID查找对象
      * @param id paser 对象ID
      * @param tableName 集合名字
@@ -101,6 +112,16 @@ interface ParserServer {
      */
     getList<T>(query: any, tClass?: Tclass<T>): Promise<Array<T>>;
 
+
+     /**
+     * 条件查找
+     * @param query paser 查询对象
+     * @param tClass 是否使用泛型实例
+     * @return 实例对象列表          
+     */
+    getLists<T>(tableName: string, conditions?: ConditionList,
+            orders?:OrderList,tClass?: Tclass<T>): Promise<Array<T>>;
+
     /** 
     * 当前登录ID
     */
@@ -119,6 +140,20 @@ interface ParserServer {
      * @return parse 对象
      */
     setParseObj(tableName: string): any;
+
+    /**
+     * 设置 查询 条件
+     * @param query 集合名字 
+     * @return conditionList查询条件
+     */
+    setCondition(query: any, conditionList: ConditionList);
+
+    /**
+     * 设置 排序 条件
+     * @param query 集合名字 
+     * @return orders 条件
+     */
+    setOrder(query: any, orders: OrderList)
 }
 
 /**

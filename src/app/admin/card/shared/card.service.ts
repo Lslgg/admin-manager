@@ -20,6 +20,13 @@ export class CardService {
         return promise;
     }
 
+    deleteAll(ids: Array<string>):Promise<boolean> {
+        var conditions: ConditionList = [];
+        conditions.push({ field: "objectId", value: ids, condition: "in" });
+        let promise=this.ps.deleteAll("CardLog",conditions);
+        return promise;
+    }
+
     upUserCard(id: string, card: number, username: string): Promise<boolean> {
 
         let promise = new Promise<boolean>((resolve, reject) => {
