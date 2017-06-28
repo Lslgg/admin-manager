@@ -45,7 +45,7 @@ export class PagiationComponent implements OnInit {
         let startIndex = 1;
         let lastIndex = 0;
 
-        //如果页码不够设置的最页数不用隐藏页面直接显示页码
+        //如果页码不够设置的最大页数不用隐藏页面直接显示页码
         startIndex = 1;
         lastIndex = pageCount;
         if (lastIndex < this.maxPage) {
