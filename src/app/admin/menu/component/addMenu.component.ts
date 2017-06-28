@@ -38,6 +38,7 @@ export class AddMenuComponent implements OnInit {
             title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
             code: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
             url: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
+            menuImg: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(24)]],
             isLeaf: true,
             isValid: true
         });
@@ -68,6 +69,7 @@ export class AddMenuComponent implements OnInit {
             this.menuForm.get("title").setValue(info.title);
             this.menuForm.get("code").setValue(info.code);
             this.menuForm.get("url").setValue(info.url);
+            this.menuForm.get("menuImg").setValue(info.menuImg);
             this.menuForm.get("isLeaf").setValue(info.isLeaf);
             this.menuForm.get("isValid").setValue(info.isValid);
         })
@@ -90,5 +92,10 @@ export class AddMenuComponent implements OnInit {
         this.menu.url = formInfo["url"];
         this.menu.isValid = formInfo["isValid"];
         this.menu.isLeaf = formInfo["isLeaf"];
+        this.menu.menuImg=formInfo['menuImg'];
+    }
+
+    onSetImg(className:string){
+        this.menuForm.get("menuImg").setValue(className);
     }
 }

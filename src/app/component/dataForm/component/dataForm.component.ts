@@ -42,4 +42,8 @@ export class DataFormComponent implements OnInit {
         this.onSubmit.emit(this.formInfo.value);
     }
 
+    revert(){
+        
+    }
+
 }

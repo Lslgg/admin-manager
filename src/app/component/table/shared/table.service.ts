@@ -20,7 +20,7 @@ export class TableService {
     }
 
     getDataTotal(name:string, coditions:ConditionList,
-            totals:Array<{name:string,title:string,total:number}>): Promise<boolean> {
+            totals:Array<{name:string,title:string,total:number}>) {
         this.Parse.getLists(name,coditions).then(result=>{
             console.log(result.length);
             totals.forEach(p=>p.total=0);
@@ -29,8 +29,6 @@ export class TableService {
                     p.total+= result[i][p.name];
                  })
             }
-            console.log(totals)
         })
-        return null;
     }
 }

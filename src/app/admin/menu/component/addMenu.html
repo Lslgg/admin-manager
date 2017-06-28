@@ -1,4 +1,4 @@
-<template-panel-form>
+<template-panel-form [Title]="'添加菜单'">
     <div body>
         <data-form [formInfo]="menuForm" (onSubmit)="onSubmit($event)">
             <form-item [name]="'parentTitle'" [title]="'父级菜单'"></form-item>
@@ -17,7 +17,12 @@
                 <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
                 <form-validator [type]="'maxLength'" [value]="24" [title]="'最多12个字符'"></form-validator>
             </form-item>
-             <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
+            <form-item [name]="'menuImg'" [title]="'图标'" [type]="'font-img'" 
+                (click)="modalMenuImg.show()"></form-item>
+            <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
         </data-form>
+        <data-modal [title]="'选择菜单图标'" #modalMenuImg>
+            <font-awesome (onSetImg)="onSetImg($event);modalMenuImg.close()"></font-awesome>
+        </data-modal>
     </div>
 </template-panel-form>

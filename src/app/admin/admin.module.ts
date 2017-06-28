@@ -24,15 +24,18 @@ import { TableModule } from '../component/table/table.module';
 import { DataFormModule } from '../component/dataform';
 import { TreeModule } from '../component/tree';
 import { DataModalModule } from '../component/dataModal';
-import { CheckedPipe, KeysPipe} from './power/shared/power.pipe'
+import { FontawesomeModule } from '../component/fontawesome';
+
+import { CheckedPipe, KeysPipe} from './power/shared/power.pipe';
+
 
 
 import { SIDEBAR_TOGGLE_DIRECTIVES, NAV_DROPDOWN_DIRECTIVES, 
-  AsideToggleDirective } from './common/directive';
+  AsideToggleDirective,EqualValidator } from './common/directive';
 
 let directive=[
   SIDEBAR_TOGGLE_DIRECTIVES, NAV_DROPDOWN_DIRECTIVES, 
-  AsideToggleDirective
+  AsideToggleDirective,EqualValidator
 ];
 
 
@@ -50,7 +53,8 @@ let directive=[
     TemplateModule,
     TableModule,
     TreeModule,
-    DataModalModule
+    DataModalModule,
+    FontawesomeModule
   ],
   declarations: [
     directive,

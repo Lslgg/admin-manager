@@ -6,6 +6,7 @@ export class Menu{
     public isLeaf:boolean;
     public url:string;
     public code:string;
+    public menuImg:string;
     public isValid:boolean;
     public colloction:string
 }

@@ -9,7 +9,7 @@ export class SystemService {
 
 	Parse: ParserServer;
 
-	constructor( @Inject("commonApi") commonHttp: CommonApi, @Inject("parseManager") parse) {
+	constructor( @Inject("commonApi") commonHttp, @Inject("parseManager") parse) {
 		this.api = commonHttp;
 		this.Parse = parse.Parse;
 	}

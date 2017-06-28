@@ -54,6 +54,7 @@ export class MenuService {
         dbInfo.set("title", menu.title);
         dbInfo.set("code", menu.code);
         dbInfo.set("url", menu.url);
+        dbInfo.set("menuImg", menu.menuImg);
         dbInfo.set("pid", menu.pid);
         dbInfo.set("isLeaf",menu.isLeaf);
         dbInfo.set("isValid", menu.isValid);

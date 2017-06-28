@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class IndexService {
@@ -9,8 +8,8 @@ export class IndexService {
 
     Parse: ParserServer;
 
-    constructor( @Inject("commonApi") commonHttp: CommonApi, @Inject("parseManager") parse) {
-        this.api = commonHttp;
+    constructor(@Inject("commonApi") commonApi,@Inject("parseManager") parse) {
+        this.api = commonApi;
         this.Parse = parse;
     }
 

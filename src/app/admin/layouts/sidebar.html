@@ -13,12 +13,12 @@
                 <ng-container *ngFor="let subMenu of menu.subNavMenuList">
                     <ng-container *ngIf="subMenu.subNavMenuList.length!=0">
                         <li class="nav-item nav-dropdown" routerLinkActive="open">
-                            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>{{subMenu.title}}</a>
+                            <a class="nav-link nav-dropdown-toggle" href="#"><i class="{{subMenu.menuImg}}"></i>{{subMenu.title}}</a>
                             <ul class="nav-dropdown-items">
                                 <ng-container *ngFor="let subSubMenu of subMenu.subNavMenuList">
                                     <li class="nav-item">
                                         <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subSubMenu.url}}">
-                                            <i class="icon-star"></i>{{subSubMenu.title}}</a>
+                                            <i class="{{subSubMenu.menuImg}}"></i>{{subSubMenu.title}}</a>
                                     </li>
                                 </ng-container>
                             </ul>
@@ -27,7 +27,7 @@
                     <ng-container *ngIf="subMenu.subNavMenuList==0">
                         <li class="nav-item">
                             <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subMenu.url}}">
-                                <i class="icon-calculator"></i> {{subMenu.title}} </a>
+                                <i class="{{subMenu.menuImg}}"></i> {{subMenu.title}} </a>
                         </li>
                     </ng-container>
                 </ng-container>

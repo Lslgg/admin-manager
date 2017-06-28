@@ -1,4 +1,4 @@
-<template-panel-form>
+<template-panel-form [Title]="'添加角色'">
     <data-form [formInfo]="roleForm" (onSubmit)="onSubmit($event)" body>
         <form-item [name]="'roleName'" [title]="'角色名'">
             <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>

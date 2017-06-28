@@ -12,6 +12,7 @@
         ".zshrc":true,
         "src/environments":true,
         "src/tsconfig.spec.json":true,
-        "data.rar":true
+        "data.rar":true,
+        "dist":true
     }
 }

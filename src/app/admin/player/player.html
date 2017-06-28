@@ -1,4 +1,4 @@
-<template-panel-table [Title]="'玩家列表'" (onAdd)="onAdd($event)">
+<template-panel-table [Title]="'玩家列表'" (onAdd)="onAdd()">
        <data-table [modlueName]="'Player'" [isSearch]="true" (onSearch)="onSearch($event)" body>
 
         <search-item [name]="'id'" [title]="'玩家ID'" 
