@@ -1,0 +1,105 @@
+<div plane-body>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">是否免费房卡</div>
+                    <div class="card-block">
+                        <input type="checkbox" [checked]="checkstr" name="checkInfo" (change)="set_if_free(checkInfo.checked)" #checkInfo>                        (勾选表是免费房卡)
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="button" (click)="set_if_free(checkInfo.checked)"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> 重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">公告信息</div>
+                    <div class="card-block">
+                        <textarea [(ngModel)]="news" name="news" id="news" style="width:100%;min-width: 350px;">
+                        </textarea>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="button" (click)="set_news()"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> 重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">走马灯</div>
+                    <div class="card-block">
+                        <textarea [(ngModel)]="notice" name="notice" id="notice" style="width:100%;min-width: 350px;">
+                        </textarea>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="button" (click)="set_notice()"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> 重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">微信提示</div>
+                    <div class="card-block">
+                        <textarea [(ngModel)]="tip" name="tip" id="tip" style="width:100%;min-width: 350px;">
+                        </textarea>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="button" (click)="set_tip()"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> 重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">版本设置</div>
+                    <div class="card-block">
+                        <form #f="ngForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="iosUrl" class="col-md-1 control-label" >
+                                    IOS 路径
+                                </label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" [(ngModel)]="iosUrl" name="iosUrl">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="iosVersion" class="col-md-1 control-label" >
+                                    IOS 版本
+                                </label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" [(ngModel)]="iosVersion" name="iosVersion">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="androidUrl" class="col-md-1 control-label" >
+                                    安卓 路径
+                                </label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" [(ngModel)]="androidUrl" name="androidUrl">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="androidVersion" class="col-md-1 control-label" >
+                                    安卓 版本
+                                </label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" [(ngModel)]="androidVersion" name="androidVersion">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="button" (click)="set_version()"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                        <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> 重置</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

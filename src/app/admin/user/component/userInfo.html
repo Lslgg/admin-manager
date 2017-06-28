@@ -1,0 +1,10 @@
+<template-panel-form [Title]="'修改用户信息'">
+    <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)" body>
+        <form-item [name]="'username'" [title]="'姓名'">
+            <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+        </form-item>
+        <form-item [name]="'email'" [title]="'邮箱'"></form-item>
+        <form-item [name]="'phone'" [title]="'联系电话'"></form-item>        
+        <form-item [name]="'address'" [title]="'联系地址'"></form-item>        
+    </data-form>
+</template-panel-form>

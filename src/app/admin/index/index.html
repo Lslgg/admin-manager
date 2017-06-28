@@ -1,0 +1,62 @@
+<template-panel-form>
+    <div class="row" body>
+        <div class="col-md-6">
+            <div class="card card-inverse card-info">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-2">
+                        <i class="icon-people"></i>
+                    </div>
+                    <div class="h4 mb-0">{{totalPlayer}}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">用户总数</small>
+                    <div class="progress progress-white progress-xs mt-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-inverse card-success">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-2">
+                        <i class="icon-user-follow"></i>
+                    </div>
+                    <div class="h4 mb-0">{{ newPlayer }}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">新增用户数</small>
+                    <div class="progress progress-white progress-xs mt-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" body>
+        <div class="col-md-6">
+            <div class="card card-inverse card-primary">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-2">
+                        <i class="icon-pie-chart"></i>
+                    </div>
+                    <div class="h4 mb-0"> {{ onlinePlayer }}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">在线用户数</small>
+                    <div class="progress progress-white progress-xs mt-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-inverse card-info">
+                <div class="card-block">
+                    <div class="h1 text-muted text-right mb-2">
+                        <i class="icon-speech"></i>
+                    </div>
+                    <div class="h4 mb-0">{{ useCard }}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">房卡使用数</small>
+                    <div class="progress progress-white progress-xs mt-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template-panel-form>

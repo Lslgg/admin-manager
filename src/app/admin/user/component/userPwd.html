@@ -1,0 +1,19 @@
+<template-panel-form>
+    <data-form [formInfo]="userForm" (onSubmit)="onSubmit($event)" body>
+        <form-item [name]="'username'" [title]="'姓名'">
+            <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+        </form-item>
+        <form-item [name]="'password'" [title]="'当前密码'" [type]="'password'">
+            <form-validator [type]="'required'" [title]="'请输入密码'"></form-validator>
+        </form-item>
+        <form-group [formInfo]="userForm" [name]="'pwdList'">
+            <form-item [name]="'password'" [title]="'密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
+                <form-validator [type]="'required'" [title]="'请输入密码'"></form-validator>
+                <form-validator [type]="'minLength'" [value]="6" [title]="'最少6个字符'"></form-validator>
+            </form-item>
+            <form-item [name]="'passwordConfirm'" [title]="'确认密码'" [type]="'password'" [formInfo]="userForm['controls']['pwdList']">
+                <form-validator [type]="'mismatch'" [title]="'请输入相同的密码！'"></form-validator>
+            </form-item>
+        </form-group>
+    </data-form>
+</template-panel-form>
