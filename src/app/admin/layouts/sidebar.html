@@ -3,31 +3,32 @@
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/index']">
-                    <i class="icon-speedometer"></i> 首页 </a>
+                    <i class="icon-speedometer"></i> 首页
+                    <span class="badge badge-info">NEW</span></a>
             </li>
             <ng-container *ngFor="let menu of navMenuList">
                 <li class="divider"></li>
                 <li class="nav-title">
-                    {{menu.title}}
+                  {{menu.title}}
                 </li>
                 <ng-container *ngFor="let subMenu of menu.subNavMenuList">
                     <ng-container *ngIf="subMenu.subNavMenuList.length!=0">
                         <li class="nav-item nav-dropdown" routerLinkActive="open">
-                            <a class="nav-link nav-dropdown-toggle" href="#"><i class="{{subMenu.menuImg}}"></i>{{subMenu.title}}</a>
-                            <ul class="nav-dropdown-items">
+                            <a class="nav-link nav-dropdown-toggle" href="#"><i style="margin:3px" class="{{subMenu.menuImg}}"></i>{{subMenu.title}}</a>
+                            <ul class="nav-dropdown-items"> 
                                 <ng-container *ngFor="let subSubMenu of subMenu.subNavMenuList">
                                     <li class="nav-item">
                                         <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subSubMenu.url}}">
-                                            <i class="{{subSubMenu.menuImg}}"></i>{{subSubMenu.title}}</a>
+                                            <i style="margin:3px" class="{{subSubMenu.menuImg}}"></i>{{subSubMenu.title}}</a>
                                     </li>
                                 </ng-container>
                             </ul>
-                        </li>
+                        </li> 
                     </ng-container>
                     <ng-container *ngIf="subMenu.subNavMenuList==0">
                         <li class="nav-item">
                             <a class="nav-link" routerLinkActive="active" routerLink="/admin/{{subMenu.url}}">
-                                <i class="{{subMenu.menuImg}}"></i> {{subMenu.title}} </a>
+                                <i style="margin:3px" class="{{subMenu.menuImg}}"></i>{{subMenu.title}}</a>
                         </li>
                     </ng-container>
                 </ng-container>
