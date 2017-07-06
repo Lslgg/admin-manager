@@ -31,7 +31,7 @@ export class TreeItemComponent implements OnInit {
 
     }
 
-    //下开方法因为控件自己调用了自己，然后要传出去自己的方法，所以同一方法写了两次
+    //下面方法因为控件自己调用了自己，然后要传出去自己的方法，所以同一方法写了两次
     getSelfSubTree(tree: Tree) {
         this.onGetSubTree.emit(tree);
     }
