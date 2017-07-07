@@ -11,7 +11,7 @@
 
 #### 使用 Parse server [Parse server](http://parseplatform.org/)  
 
-### 项目简单自己封装了相关的 component
+### 项目简单封装相关的 component
 
 > 1. Table
 > 2. dataForm
