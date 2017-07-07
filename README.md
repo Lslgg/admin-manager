@@ -6,7 +6,6 @@
 
 #### 使用 CoreUI - Free Bootstrap Admin Template 地址 [CoreUI](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template)
 
-
 ### 后台数据
 
 #### 使用 Parse server [Parse server](http://parseplatform.org/)  
@@ -26,3 +25,11 @@
 > 2. 角色管理
 > 3. 菜单管理
 > 4. 权限管理
+
+### 项目运行
+
+#### npm install ,ng server
+
+### 项目发布
+
+#### 请使用 ng build --target=production --environment=prod 如果不使用客户端会看到后台源码！ 
