@@ -11,7 +11,7 @@
 
 #### 使用 Parse server [Parse server](http://parseplatform.org/)  
 
-### 简单封装组件
+### 简单封装的组件
 
 > 1. Table
 > 2. dataForm
