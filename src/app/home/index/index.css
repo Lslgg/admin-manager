@@ -1,0 +1,84 @@
+
+.index{
+    font-size: 100%;
+}
+.introduction, .rule , .about,.imgcode {
+    text-align: center;
+}
+
+.introduction{
+    padding: 20px 0px;
+    line-height: 24px;
+    background: url('/assets/img/home/brief.png');
+    background-size:cover;
+}
+
+.introduction img{
+    max-width: 100%
+}
+.rule{
+    padding:20px;
+}
+.rule img{
+    max-width: 50%;
+    margin-bottom: 20px;
+}
+
+.about{
+    line-height: 32px;
+    background: url('/assets/img/home/about.png');
+    background-size:cover;
+}
+
+.imgcode{
+    background: white;
+    padding:30px;
+}
+.imgcode img{
+    max-width: 25%;
+    text-align: center; 
+}
+
+.home-slide img{
+    width: 100%;
+    max-height: 360px;
+}
+
+.index p{
+    margin-bottom: 2px;
+}
+
+.footer{
+    text-align: center;
+    line-height: 42px;
+    background: url('/assets/img/home/footer.png');
+    background-size:cover;
+}
+
+.logo{
+    max-width:180px;
+}
+
+.nav-inline{
+    padding-top:32px;
+}
+
+
+@media (max-width: 768px) { 
+    .logo{
+        max-width: 50%;
+    }
+    .hader{
+        text-align: center;
+    }
+
+    .nav-link, .navbar .dropdown-toggle{
+        padding:0px;
+        margin: 8px;
+    }
+
+    .nav-inline{
+        padding-top:2px;
+    }
+ } 
+ 

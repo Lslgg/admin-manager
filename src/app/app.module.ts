@@ -7,6 +7,7 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 // Routing Module
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
+import { HomeModule } from './home/home.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './admin/login/login.component';
 
@@ -24,7 +25,8 @@ import { AuthGuard } from './admin/common/server/auth-guard.service';
     BrowserAnimationsModule,
     DatepickerModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    HomeModule
   ],
   declarations: [
     AppComponent,
