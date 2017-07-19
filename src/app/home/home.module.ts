@@ -7,6 +7,7 @@ import { CommonModule as SystemCommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { ComponentList, HomeRoutingModule } from './home.routing'
 
+import { MouseWheelDirective } from './directive/mousewheel.directive'
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { ComponentList, HomeRoutingModule } from './home.routing'
     declarations: [
         HomeComponent,
         ComponentList,
+        MouseWheelDirective
     ],
     bootstrap: [
         HomeComponent

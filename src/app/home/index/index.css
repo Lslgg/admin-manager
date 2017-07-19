@@ -1,3 +1,10 @@
+.container-fluid{
+    padding:0px;
+}
+.content{
+    max-width:1200px;
+    margin:auto;
+}
 
 .index{
     font-size: 100%;
@@ -61,6 +68,16 @@
 
 .nav-inline{
     padding-top:32px;
+}
+
+
+ .active{
+    background:green;
+    color: white;
+ }
+
+.active:hover{
+    color: white;
 }
 
 
