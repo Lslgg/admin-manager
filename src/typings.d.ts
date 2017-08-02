@@ -95,7 +95,6 @@ interface ParserServer {
     * @return 实例对象列表，总数
     */
     getPageList<T>(pageInfo: Pages, tClass?: Tclass<T>): Promise<{ list: Array<T>, count: number }>;
-
     /**
      * 查找总数
      * @param tableName 集合名字 

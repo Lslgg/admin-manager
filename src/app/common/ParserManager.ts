@@ -10,8 +10,8 @@ export class ParserManager implements ParserServer {
 
     constructor() {
         let parse = require("parse");
-        parse.initialize("xxxxx");
-        parse.serverURL = 'http://xxx.xxx.xxx/parse';
+        parse.initialize("webSite");
+        parse.serverURL = 'http://xxx.xxx.xxx.xxx:1337/parse';
         this.Parse = parse; 
     }
 
@@ -116,7 +116,7 @@ export class ParserManager implements ParserServer {
      * @param pageInfo 分页条件 
      * @param tClass 是否使用泛型实例可以为空不写
      */
-    getPageList<T>(pageInfo: pageList, tClass?: Tclass<T>): Promise<{ list: Array<{}>, count: number }> {
+    getPageList<T>(pageInfo: Pages, tClass?: Tclass<T>): Promise<{ list: Array<T>, count: number }> {
 
         var query = this.setQuery(pageInfo.name);
         let promise = new Promise<{ list: Array<T>, count: number }>((resolve, reject) => {
@@ -216,7 +216,8 @@ export class ParserManager implements ParserServer {
     /*
      * 条件查找
      */
-    public getLists<T>(tableName: string, conditions?: ConditionList,orders?:OrderList,tClass?: Tclass<T>): Promise<Array<T>>{
+    public getLists<T>(tableName: string, conditions?: ConditionList,
+                orders?:OrderList,tClass?: Tclass<T>): Promise<Array<T>>{
         var query = this.setQuery(tableName);
         let promise = new Promise<Array<T>>((resolve, reject) => {
             if(conditions){
