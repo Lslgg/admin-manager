@@ -143,6 +143,6 @@ export class CommonHttpApi implements CommonApi{
    */
   public GM_SET_VERSION = "set_version";
 
-  public GMAPI = "gmApi";
+  public GMAPI = "gmApi"; 
 
 }

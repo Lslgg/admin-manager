@@ -17,12 +17,12 @@ export class PlayerService {
 	}
 
 	getList(pageIndex: number, pageSize: number): Promise<Array<Player>> {
-		let promise = new Promise((resolve, reject) => {
+		let promise = new Promise<Array<Player>>((resolve, reject) => {
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.USER_LIST, query: "page=" + pageIndex + "&pageSize=" + pageSize })
 				.then(result => {
 					let info = JSON.parse(result);
-					if (info.error_code != 0) resolve(false);
+					if (info.error_code != 0) resolve(null);
 					let playList: Array<Player> = new Array<Player>();
 
 					for (var i = 0; i < info.result.data.length; i++) {
@@ -41,12 +41,12 @@ export class PlayerService {
 	}
 
 	getCount(id: string = ""): Promise<number> {
-		let promise = new Promise((resole, reject) => {
+		let promise = new Promise<number>((resole, reject) => {
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.USER_TOTAL, query: "" })
 				.then(result => {
 					let info = JSON.parse(result);
-					if (info.error_code != 0) resole(false);
+					if (info.error_code != 0) resole(-1);
 					resole(info.result.num);
 				})
 		})
@@ -54,12 +54,12 @@ export class PlayerService {
 	}
 
 	getInfo(id: string): Promise<Player> {
-		let promise = new Promise((resole, reject) => {
+		let promise = new Promise<Player>((resole, reject) => {
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.USER_INFO, query: "userId=" + id })
 				.then(result => {
 					let info = JSON.parse(result);
-					if (info.error_code != 0) resole(false);
+					if (info.error_code != 0) resole(null);
 					var player = new Player();
 					Object.assign(player, info.result);
 					resole(player);
@@ -69,7 +69,7 @@ export class PlayerService {
 	}
 
 	upInfo(id: string, card: number, username: string): Promise<boolean> {
-		let promise = new Promise((resolve, reject) => {
+		let promise = new Promise<boolean>((resolve, reject) => {
 			if (card <= 0) { resolve(false); return; }
 
 			//当前操作的用户
