@@ -8,6 +8,7 @@ import { PowerRoutes, PowerComponentList } from './power/power.routing';
 import { PlayerRoutes, PlayerComponentList } from './player/player.routing';
 import { CardRoutes, CardComponentList } from './card/card.routing';
 import { SystemRoutes, SystemComponentList } from './system/system.routing';
+import { PayLogRoutes, PayLogComponentList } from './payLog/payLog.routing';
 import { NotFindPageComponent, NotPowerComponent } from '../component/404';
 
 
@@ -29,6 +30,8 @@ routeList = routeList.concat(PlayerRoutes);
 routeList = routeList.concat(CardRoutes);
 //系统管理
 routeList = routeList.concat(SystemRoutes);
+//充值统计
+routeList = routeList.concat(PayLogRoutes);
 
 routeList = routeList.concat([
   { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
@@ -56,5 +59,6 @@ export const ComponentList = [
   CardComponentList,
   SystemComponentList,
   NotFindPageComponent,
-  NotPowerComponent
+  NotPowerComponent,
+  PayLogComponentList
 ]

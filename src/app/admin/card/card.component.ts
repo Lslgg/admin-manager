@@ -3,7 +3,7 @@ import { CardService } from './shared';
 import { Route,Router } from '@angular/router';
 
 @Component({
-	selector: 'card',
+	selector: 'admin-card',
 	templateUrl: 'card.html',
 	providers:[CardService]
 })

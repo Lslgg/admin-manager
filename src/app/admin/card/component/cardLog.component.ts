@@ -13,7 +13,11 @@ export class CardLogComponent implements OnInit {
 
     stopDate:Date=new Date();
     
-    constructor(private cardService:CardService) { }
+    constructor(private cardService:CardService) { 
+        this.startDate.setDate(1);
+        this.stopDate.setMonth(this.startDate.getMonth()+1);
+        this.stopDate.setDate(1);
+    }
 
     ngOnInit() { }
 
