@@ -19,7 +19,7 @@ export class ParserManager implements ParserServer {
     * 添加与修改
     */
     public add(table: any): Promise<boolean> {
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise<boolean>((resolve, reject) => {
             table.save(null, {
                 success: (menu) => resolve(true),
                 error: (menu, error) => {
@@ -36,7 +36,7 @@ export class ParserManager implements ParserServer {
     * 批量添加与修改
     */
     public addAll(list: any): Promise<boolean> {
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise<boolean>((resolve, reject) => {
             this.Parse.Object.saveAll(list, {
                 success: (list) => resolve(true),
                 error: (error) => reject(false)
@@ -49,7 +49,7 @@ export class ParserManager implements ParserServer {
     * 根据ID删除
     */
     public delete(id: string, tableName: string): Promise<boolean> {
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise<boolean>((resolve, reject) => {
             var table = this.Parse.Object.extend(tableName);
             var query = new this.Parse.Query(table);
             query.get(id, {

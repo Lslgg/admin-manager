@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { IndexRoutes, IndexComponentList } from './index/';
+import { IndexRoutes, IndexComponentList } from './index/index.routing';
 import { UserRoutes, UserComponentList } from './user/user.routing';
 import { RoleRoutes, RoleComponentList } from './role/role.routing';
 import { MenuRoutes, MenuComponentList } from './menu/menu.routing';

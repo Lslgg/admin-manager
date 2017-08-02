@@ -1,1 +1,1 @@
-export * from "./index.routing";
+export * from "./index.component";
