@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build production": "ng build --target=production --environment=prod",
+    "build pro": "ng build --prod --aot=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
