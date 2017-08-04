@@ -8,12 +8,17 @@
         "**/.DS_Store": true,
         "e2e":true,
         
-        "node_modules":true,
+        // "node_modules":true,
         ".editorconfig":true,
         ".zshrc":true,
         "src/environments":true,
         "src/tsconfig.spec.json":true,
         "data.rar":true,
-        "dist":true
+        "dist":true,
+        "LICENSE":true,
+        "tsconfig.json":true,
+        ".gitignore":true,
+        "tslint.json":true,
+        "yarn-error.log":true
     }
 }

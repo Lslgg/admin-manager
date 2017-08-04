@@ -23,7 +23,6 @@ export class SidebarComponent implements OnInit {
             this.navMenuList = list;
             let navList = new Array<NavMenu>();
             this.navMenuList = this.getTreeList("0", navList);
-            console.log(this.navMenuList);
         });
     }
 

@@ -22,7 +22,6 @@ export class TableService {
     getDataTotal(name:string, coditions:ConditionList,
             totals:Array<{name:string,title:string,total:number}>) {
         this.Parse.getLists(name,coditions).then(result=>{
-            console.log(result.length);
             totals.forEach(p=>p.total=0);
              for (let i = 0; i < result.length; i++) {
                  totals.forEach(p=>{

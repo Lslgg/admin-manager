@@ -1,4 +1,6 @@
-<div class="searchItem" id="searchItem">
+<div class="searchItem" id="searchItem"
+ [attr.data-name]="name" [attr.data-type]="type"
+ [attr.data-condition]="condition"> 
     <label class="form-control-label" for="hf-email">{{title}}:</label>
     <ng-container [ngSwitch]="type">
         <ng-container *ngSwitchCase="'select'">

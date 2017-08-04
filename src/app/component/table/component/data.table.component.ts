@@ -1,6 +1,9 @@
-import { Component, OnInit, Input, ViewChildren, ContentChild, ElementRef, AfterViewInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, ContentChild, ElementRef, 
+    AfterViewInit, Output, EventEmitter, ViewChild,QueryList } from '@angular/core';
 import { TheadComponent } from './thead.component';
 import { TbodyComponent } from './tbody/tbody.component';
+import { SearchComponent } from './search/search.component';
+
 
 
 @Component({
@@ -25,6 +28,7 @@ export class DataTableComponent implements OnInit {
     @ContentChild(TheadComponent) thead: TheadComponent;
 
     @ContentChild(TbodyComponent) tbody: TbodyComponent;
+
 
     constructor() {
 
@@ -52,18 +56,16 @@ export class DataTableComponent implements OnInit {
         this.tbody.conditionList=this.conditionList;
     }
 
-    search() {
-       
-        let elementList = this.headerViewChild.nativeElement.querySelectorAll("search-item");
+    search() { 
+        let elementList = this.headerViewChild.nativeElement.querySelectorAll("#searchItem");
         let length = elementList.length;
-        
         let list: Array<{ field: string, value: string, condition: string }> = [];
 
         for (var index = 0; index < length; index++) {
             let self = elementList[index];
-            let field = self.getAttribute("ng-reflect-name");
-            let valueType = self.getAttribute("ng-reflect-value-type");
-            let condition = self.getAttribute("ng-reflect-condition");
+            let field = self.getAttribute("data-name"); 
+            let valueType = self.getAttribute("data-type");
+            let condition = self.getAttribute("data-condition");
             let info = self.getElementsByClassName(field);
             let value = info[0].value;
             
@@ -82,8 +84,6 @@ export class DataTableComponent implements OnInit {
             list.push({ field, value, condition });
         }
         
-        console.log(list);
-        
         this.tbody.conditionList=list;
         if(this.tbody.IsAutomaticList){
             this.tbody.getPage(1);
@@ -92,4 +92,5 @@ export class DataTableComponent implements OnInit {
         
         this.onSearch.emit(list);
     }
+
 }
