@@ -5,18 +5,18 @@ export class CardService {
 
     ps: ParserServer;
 
-    constructor( @Inject("parseManager") parse) {
+    constructor(@Inject("parseManager") parse) {
         this.ps = parse;
     }
 
     getRoleList(): Promise<Array<{ id: string, roleName: string }>> {
         let role = this.ps.setQuery("Role");
-        let promise = this.ps.getList(role);
+        let promise = this.ps.getList<{ id: string, roleName: string }>(role);
         return promise;
     }
 
     getUserCard(id: string): Promise<{ id: string, username: string, card: number }> {
-        let promise = this.ps.getInfo(id, "User");
+        let promise = this.ps.getInfo<{ id: string, username: string, card: number }>(id, "User");
         return promise;
     }
 
