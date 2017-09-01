@@ -28,8 +28,6 @@ import { FontawesomeModule } from '../component/fontawesome';
 
 import { CheckedPipe, KeysPipe} from './power/shared/power.pipe';
 
-
-
 import { SIDEBAR_TOGGLE_DIRECTIVES, NAV_DROPDOWN_DIRECTIVES, 
   AsideToggleDirective,EqualValidator } from './common/directive';
 

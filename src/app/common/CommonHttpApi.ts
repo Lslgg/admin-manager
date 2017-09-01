@@ -1,4 +1,4 @@
-export class CommonHttpApi implements CommonApi{
+export class CommonHttpApi implements CommonApi {
 
   /**
   * 总共用户
@@ -94,11 +94,11 @@ export class CommonHttpApi implements CommonApi{
    */
   public GM_NEWS = "news";
 
- /**
-   * 公告信息
-   * 参数:msg
-   * 返回: Json
-   */
+  /**
+    * 公告信息
+    * 参数:msg
+    * 返回: Json
+    */
   public GM_SET_NEWS = "set_news";
 
   /**
@@ -108,11 +108,11 @@ export class CommonHttpApi implements CommonApi{
    */
   public GM_NOTICE = "notice";
 
-    /**
-   * 走马灯信息
-   * 参数:msg
-   * 返回: Json
-   */
+  /**
+ * 走马灯信息
+ * 参数:msg
+ * 返回: Json
+ */
   public GM_SET_NOTICE = "set_notice";
 
   /**
@@ -143,6 +143,20 @@ export class CommonHttpApi implements CommonApi{
    */
   public GM_SET_VERSION = "set_version";
 
-  public GMAPI = "gmApi"; 
+  /**
+   * 获取用户统计
+   * 参数:msg
+   * 返回: Json
+   */
+  public GM_STATSTIC="statstic";
+
+  /**
+  * 获取房卡统计
+  * 参数:msg
+  * 返回: Json
+  */
+  public GM_STATSTIC_CARD="statstic_card";
+
+  public GMAPI = "gmApi";
 
 }

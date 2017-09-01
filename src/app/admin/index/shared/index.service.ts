@@ -14,7 +14,7 @@ export class IndexService {
     }
 
     getTotalPlayer(): Promise<number> {
-        let promise = new Promise((resole, reject) => {
+        let promise = new Promise<number>((resole, reject) => {
             this.Parse.Parse.Cloud.run(this.api.GMAPI,
                 { pathname: this.api.USER_TOTAL, query: "" })
                 .then(result => {
@@ -27,7 +27,7 @@ export class IndexService {
     }
 
     getNewPlayer(): Promise<number> {
-        let promise = new Promise((resole, reject) => {
+        let promise = new Promise<number>((resole, reject) => {
             this.Parse.Parse.Cloud.run(this.api.GMAPI,
                 { pathname: this.api.USER_NEW, query: "" })
                 .then(result => {
@@ -53,7 +53,7 @@ export class IndexService {
     }
 
     getUseCard(): Promise<number> {
-        let promise = new Promise((resole, reject) => {
+        let promise = new Promise<number>((resole, reject) => {
             this.Parse.Parse.Cloud.run(this.api.GMAPI,
                 { pathname: this.api.CARD_TOTLE_USE, query: "" })
                 .then(result => {

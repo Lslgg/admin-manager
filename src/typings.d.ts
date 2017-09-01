@@ -303,6 +303,20 @@ interface CommonApi {
      */
     GM_SET_VERSION: string;
 
+     /**
+     * 获取用户统计
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_STATSTIC: string;
+
+     /**
+     * 获取房卡统计
+     * 参数:msg
+     * 返回: Json
+     */
+    GM_STATSTIC_CARD: string;
+
     GMAPI: string;
 }
 

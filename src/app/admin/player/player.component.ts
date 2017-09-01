@@ -13,7 +13,7 @@ export class PlayerComponent implements OnInit {
 
 	pageSize: number = 10;
 
-	pageCount: number = 0;
+	pageCount: number = 1;
 
 	playerList: Array<Player>;
 

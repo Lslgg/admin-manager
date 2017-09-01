@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { PayLogService } from "./shared";
 
 @Component({
     selector: 'admin-payLog',
-    templateUrl: 'payLog.html'
+    templateUrl: 'payLog.html',
+    providers:[PayLogService]
 })
 
 export class PayLogComponent implements OnInit {
@@ -11,11 +13,14 @@ export class PayLogComponent implements OnInit {
 
     stopDate:Date=new Date();
 
-    constructor() { 
+    constructor(private payLogService:PayLogService) { 
         this.startDate.setDate(1);
         this.stopDate.setMonth(this.startDate.getMonth()+1);
         this.stopDate.setDate(1);
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        // this.payLogService.getStatstic();
+        // this.payLogService.getStatstic_card();
+    }
 }
