@@ -6,12 +6,13 @@ declare var System: any;
 
 declare var Parse: any;
 
-type Tclass<T> = { new (): T };
+type Tclass<T> = { new(): T };
 
-type ConditionList = Array<{ 
-    field: string, 
-    value: string | number | boolean | Array<any>, 
-    condition: string }>
+type ConditionList = Array<{
+    field: string,
+    value: string | number | boolean | Array<any>,
+    condition: string
+}>
 
 type OrderList = Array<{ field: string, orderType: string }>;
 
@@ -112,14 +113,14 @@ interface ParserServer {
     getList<T>(query: any, tClass?: Tclass<T>): Promise<Array<T>>;
 
 
-     /**
-     * 条件查找
-     * @param query paser 查询对象
-     * @param tClass 是否使用泛型实例
-     * @return 实例对象列表          
-     */
+    /**
+    * 条件查找
+    * @param query paser 查询对象
+    * @param tClass 是否使用泛型实例
+    * @return 实例对象列表          
+    */
     getLists<T>(tableName: string, conditions?: ConditionList,
-            orders?:OrderList,tClass?: Tclass<T>): Promise<Array<T>>;
+        orders?: OrderList, tClass?: Tclass<T>): Promise<Array<T>>;
 
     /** 
     * 当前登录ID
@@ -303,19 +304,40 @@ interface CommonApi {
      */
     GM_SET_VERSION: string;
 
-     /**
-     * 获取用户统计
-     * 参数:msg
-     * 返回: Json
-     */
+    /**
+    * 获取用户统计
+    * 参数:msg
+    * 返回: Json
+    */
     GM_STATSTIC: string;
 
-     /**
-     * 获取房卡统计
-     * 参数:msg
-     * 返回: Json
-     */
+    /**
+    * 获取房卡统计
+    * 参数:msg
+    * 返回: Json
+    */
     GM_STATSTIC_CARD: string;
+
+    /**
+    * 添加群主信息
+    */
+    DEALER_Add: string;
+
+    /**
+    * 修改群主信息
+    */
+    DEALER_UP: string;
+
+    /**
+     * 查找群主列表信息
+    */
+    DEALER_LIST: string;
+
+    /**
+     * 查找群主信息
+    */
+    DEALER_GET_ID: string;
+
 
     GMAPI: string;
 }
