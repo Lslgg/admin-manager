@@ -1,0 +1,14 @@
+<template-panel-form>
+    <data-form [formInfo]="dealerForm" (onSubmit)="onSubmit($event)" body>
+        <form-item [name]="'Name'" [title]="'姓名'">
+            <form-validator [type]="'required'" [title]="'请输入姓名'"></form-validator>
+            <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
+        </form-item>
+        <form-item [name]="'Code'" [title]="'推荐码'">
+            <form-validator [type]="'required'" [title]="'请输入推荐码'"></form-validator>
+            <form-validator [type]="'minLength'" [value]="2" [title]="'最少2个字符'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="12" [title]="'最多12个字符'"></form-validator>
+        </form-item>
+    </data-form>
+</template-panel-form>

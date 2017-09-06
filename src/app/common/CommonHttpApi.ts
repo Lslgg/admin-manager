@@ -160,7 +160,7 @@ export class CommonHttpApi implements CommonApi {
     /**
      * 添加群主信息
      */
-    DEALER_Add: string = "addDealer";
+    DEALER_ADD: string = "addDealer";
   
     /**
     * 修改群主信息

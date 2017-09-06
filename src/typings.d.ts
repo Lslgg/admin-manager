@@ -321,7 +321,7 @@ interface CommonApi {
     /**
     * 添加群主信息
     */
-    DEALER_Add: string;
+    DEALER_ADD: string;
 
     /**
     * 修改群主信息
