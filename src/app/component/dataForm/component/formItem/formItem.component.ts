@@ -1,7 +1,7 @@
 import {
     Component, OnInit, Input, 
     ElementRef, AfterViewInit, Output,
-    ContentChildren, QueryList
+    ContentChildren, QueryList,HostBinding
 } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,16 +10,20 @@ import { ValidatorComponent } from '../validator/validator.component'
 
 @Component({
     selector: 'form-item',
-    templateUrl: 'formItem.html'
+    templateUrl: 'formItem.html',
 })
 
 export class FormItemComponent implements OnInit {
 
     @Input() name: string;
 
+    @Input() isRootClass:boolean=true;
+
     @Input() title: string;
 
     @Input() type: string="text";
+
+    @HostBinding('class.col-md-12') colmd12: boolean;
 
     @Input() formInfo: FormGroup;
 
@@ -32,7 +36,7 @@ export class FormItemComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+        this.colmd12 = this.isRootClass; 
     }
 
     ngAfterContentInit() {

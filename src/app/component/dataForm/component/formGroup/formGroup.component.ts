@@ -1,9 +1,10 @@
-import { Component, OnInit,Input,ContentChildren,QueryList } from '@angular/core';
+import { Component, OnInit,Input,ContentChildren,QueryList,HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'form-group',
-    templateUrl: 'formGroup.html'
+    templateUrl: 'formGroup.html',
+    host: { 'class': 'col-md-12' }
 })
 
 export class FormGroupComponent implements OnInit {
@@ -12,13 +13,13 @@ export class FormGroupComponent implements OnInit {
 
     @Input() name:string;
 
+    @Input() isRootClass:boolean=true;
+
+    @HostBinding('class.col-md-12') colmd12: boolean;
+    
     constructor() { }
 
     ngOnInit() { 
-       
-    }
-
-    ngAfterContentInit(){
-
+        this.colmd12 = this.isRootClass; 
     }
 }

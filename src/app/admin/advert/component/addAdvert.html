@@ -1,0 +1,19 @@
+<template-panel-form [Title]="'添加广告'">
+    <data-form [formInfo]="advertForm" (onSubmit)="onSubmit($event)" body>
+        <form-item [name]="'title'" [title]="'标题'">
+            <form-validator [type]="'required'" [title]="'请输入标题'"></form-validator>
+            <form-validator [type]="'minLength'" [value]="2" [title]="'标题2个字符'"></form-validator>
+            <form-validator [type]="'maxLength'" [value]="64" [title]="'最多64个字符'"></form-validator>
+        </form-item>
+        <form-item [name]="'type'" [title]="'类型'" [type]="'select'" [dataList]="typeList">
+            <form-validator [type]="'required'" [title]="'请选择类型'"></form-validator>
+        </form-item>
+        <form-item [name]="'imageSrc'" [title]="'图片'">
+            <form-validator [type]="'required'" [title]="'请选择上传图片'"></form-validator>
+        </form-item>
+        <form-item [name]="'declare'" [title]="'说明'"></form-item>
+        <form-item [name]="'startDate'" [title]="'开始时间'" [isRootClass]="false" class="col-md-5"></form-item>
+        <form-item [name]="'endDate'" [title]="'结束时间'" [isRootClass]="false" class="col-md-5"></form-item>
+        <form-item [name]="'isValid'" [title]="'是否启用'" [type]="'checkbox'"></form-item>
+    </data-form>
+</template-panel-form>

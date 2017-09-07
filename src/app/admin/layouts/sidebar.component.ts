@@ -23,6 +23,11 @@ export class SidebarComponent implements OnInit {
             this.navMenuList = list;
             let navList = new Array<NavMenu>();
             this.navMenuList = this.getTreeList("0", navList);
+            this.navMenuList.sort((t1, t2) => {
+                if (t1.code > t2.code) return 1;
+                if (t1.code < t2.code) return -1;
+                return 0;
+            });
         });
     }
 
