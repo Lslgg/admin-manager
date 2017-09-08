@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { DatepickerModule } from 'angular2-material-datepicker';
+import { FileUploadModalModule } from '../fileUpload/';
+
 
 import {
    DataFormComponent,
@@ -23,7 +25,8 @@ let commonList = [
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
-        DatepickerModule
+        DatepickerModule,
+        FileUploadModalModule
     ],
     exports: [
         commonList

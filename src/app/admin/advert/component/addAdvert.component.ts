@@ -18,7 +18,7 @@ export class AddAdvertComponent implements OnInit {
     startDate:Date=new Date();
 
     endDate:Date=new Date();
-
+    
     constructor(private fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -30,8 +30,8 @@ export class AddAdvertComponent implements OnInit {
                 this.advertService.getInfo(id).then(info=>{
                     delete info["createdAt"]; //删除不在表单的字段
                     delete info["updatedAt"]; //删除不在表单的字段于是setValue可以直接是对象
-                    this.startDate=new Date(info.startDate);
-                    this.endDate=new Date(info.endDate);
+                    this.startDate=info.startDate;
+                    this.endDate=info.endDate;
                     this.advertForm.setValue(info);
                 })
             }
@@ -45,7 +45,7 @@ export class AddAdvertComponent implements OnInit {
             id:[''],
             title: ['', Validators.required],
             type: ['', Validators.required],
-            imageSrc: ['', Validators.required],
+            imageSrc: [''],
             declare: [''],
             startDate: [''],
             endDate: [''],
@@ -54,8 +54,9 @@ export class AddAdvertComponent implements OnInit {
     }
 
     onSubmit(advert: Advert){
-        this.advertService.add(advert).then(success=>{
-            alert(success?"操作成功！":"操作失败！");
-        })
+        // this.advertService.add(advert).then(success=>{
+        //     alert(success?"操作成功！":"操作失败！");
+        //     this.router.navigate(['../admin/advert']);
+        // })
     }
 }

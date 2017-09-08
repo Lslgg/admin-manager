@@ -5,7 +5,7 @@
         </div>
     </ng-container>
     <ng-container *ngIf="type!='checkbox'">
-        <label for="{{name}}" class="col-md-2 control-label" >
+        <label for="{{name}}" class="col-md-10 control-label" >
             {{title}}
             <ng-container *ngIf="type=='font-img'">
                 <i class="{{formInfo.get(name).value}}" ></i>
@@ -34,8 +34,12 @@
             </ng-container>
             <ng-container *ngIf="type=='date'">
                 <input type="text" class="form-control" formControlName="{{name}}" style="display: none">
-                <material-datepicker [(date)]="dateVale" [dateFormat]="'YYYY-MM-DD'" (onSelect)="onSelect($event)"  placeholder="请选择日期">
+                <material-datepicker [(date)]="datevalue" [dateFormat]="'YYYY-MM-DD'" (onSelect)="onSelect($event)"  placeholder="请选择日期">
                 </material-datepicker>
+            </ng-container>
+            <ng-container *ngIf="type=='file'">
+                <file-upload></file-upload>
+                <!-- <input type="file" [multiple]="multiple" #fileInput class="form-control" formControlName="{{name}}"> -->
             </ng-container>
             <ng-content select="form-validator"></ng-content>
         </div>

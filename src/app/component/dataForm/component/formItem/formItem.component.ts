@@ -29,7 +29,7 @@ export class FormItemComponent implements OnInit {
 
     @Input() dataList:Array<{key:string,value:string}>=[];
 
-    @Input() dateVale:Date=new Date();
+    @Input() datevalue:Date=new Date();
 
     @ContentChildren(ValidatorComponent) validatorList: QueryList<ValidatorComponent>;
 

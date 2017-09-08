@@ -29,8 +29,8 @@ export class AdvertService {
         dbInfo.set("type", advert.type);
         dbInfo.set("imageSrc", advert.imageSrc);
         dbInfo.set("declare", advert.declare);
-        dbInfo.set("startDate", advert.startDate);
-        dbInfo.set("endDate", advert.endDate);
+        dbInfo.set("startDate", new Date(advert.startDate));
+        dbInfo.set("endDate", new Date(advert.endDate));
         dbInfo.set("isValid", advert.isValid);
         return dbInfo;
     }
