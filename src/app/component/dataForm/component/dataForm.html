@@ -2,7 +2,7 @@
     <form  [formGroup]="formInfo" class="form-horizontal row" (ngSubmit)="submit()">
         <ng-content select="form-item"></ng-content>
         <ng-content select="form-group"></ng-content>
-        <div class="form-group">
+        <div class="form-group" class="col-md-12">
             <div class="col-md-12">
                 <button  [disabled]="!formInfo.valid" type="submit" class="btn btn-success">保存</button> &nbsp;
                 <button type="reset" (click)="revert()" class="btn btn-danger">重置</button>

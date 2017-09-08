@@ -32,6 +32,11 @@
                   <option *ngFor="let item of dataList" [value]="item.key">{{item.value}}</option>
               </select>
             </ng-container>
+            <ng-container *ngIf="type=='date'">
+                <input type="text" class="form-control" formControlName="{{name}}" style="display: none">
+                <material-datepicker [(date)]="dateVale" [dateFormat]="'YYYY-MM-DD'" (onSelect)="onSelect($event)"  placeholder="请选择日期">
+                </material-datepicker>
+            </ng-container>
             <ng-content select="form-validator"></ng-content>
         </div>
     </ng-container>

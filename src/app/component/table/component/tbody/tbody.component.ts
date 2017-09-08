@@ -79,7 +79,6 @@ export class TbodyComponent implements OnInit {
 
     constructor(private tbs: TableService, public elementRef: ElementRef) {
         		
-
     }
 
     ngOnInit() {

@@ -20,4 +20,10 @@ export class AdvertComponent implements OnInit {
     onAdd(){
         this.router.navigate(['../admin/addAdvert']);
     }
+
+    onSetInfo(info:IdType){
+       if(info.type=="title"){
+            this.router.navigate(['../admin/addAdvert',info.id]);
+       }
+    }
 }

@@ -29,13 +29,19 @@ export class FormItemComponent implements OnInit {
 
     @Input() dataList:Array<{key:string,value:string}>=[];
 
+    @Input() dateVale:Date=new Date();
+
     @ContentChildren(ValidatorComponent) validatorList: QueryList<ValidatorComponent>;
 
     constructor() {
+    }
 
+    onSelect(date: Date) {
+        this.formInfo.get(this.name).setValue(date.toString());
     }
 
     ngOnInit() {
+        //用于设置是否显示组件样式
         this.colmd12 = this.isRootClass; 
     }
 
@@ -46,3 +52,6 @@ export class FormItemComponent implements OnInit {
        })
     }
 }
+
+
+
