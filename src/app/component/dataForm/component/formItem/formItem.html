@@ -33,13 +33,13 @@
               </select>
             </ng-container>
             <ng-container *ngIf="type=='date'">
-                <input type="text" class="form-control" formControlName="{{name}}" style="display: none">
+                <input type="text" class="form-control" formControlName="{{name}}" style="display:none">
                 <material-datepicker [(date)]="datevalue" [dateFormat]="'YYYY-MM-DD'" (onSelect)="onSelect($event)"  placeholder="请选择日期">
                 </material-datepicker>
             </ng-container>
             <ng-container *ngIf="type=='file'">
-                <file-upload></file-upload>
-                <!-- <input type="file" [multiple]="multiple" #fileInput class="form-control" formControlName="{{name}}"> -->
+                <input type="text" class="form-control" formControlName="{{name}}" style="display:none">
+                <file-upload (onFileChange)="onFileChange($event)" [fileUrlList]="fileUrlList" (onDeleteFile)="onDeleteFile($event)"></file-upload>
             </ng-container>
             <ng-content select="form-validator"></ng-content>
         </div>

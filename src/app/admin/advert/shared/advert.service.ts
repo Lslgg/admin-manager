@@ -3,11 +3,17 @@ import { Advert } from './advert.model';
 
 @Injectable()
 export class AdvertService {
-
+    
+    api: CommonApi;
+    
     Parse: ParserServer;
-    tableName: string = "Advert"
-    constructor(@Inject("parseManager") parse) {
+
+    tableName: string = "Advert";
+
+    fileSrc:string="";
+    constructor(@Inject("commonApi") commonApi,@Inject("parseManager") parse) {
         this.Parse = parse;
+        this.fileSrc=this.Parse.fileSrc;
     }
 
     //添加修改广告

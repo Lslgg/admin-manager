@@ -45,6 +45,11 @@ interface ParserServer {
      */
     Parse: any;
 
+     /**
+     * 上传文件路径
+     */
+    fileSrc:string;
+
     /**
      * 分页信息
      */

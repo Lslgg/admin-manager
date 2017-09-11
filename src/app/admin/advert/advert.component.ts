@@ -19,7 +19,9 @@ export class AdvertComponent implements OnInit {
             { key: "2", value: "活动广告" }];
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+       
+    }
 
     onAdd() {
         this.router.navigate(['../admin/addAdvert']);
