@@ -46,7 +46,7 @@ export class FileUploadComponent {
                     this.fileUrlList.push(url);
                     var fileName=this.getFileName(url);
                     this.fileNameList.push(fileName);
-                    this.onFileChange.emit(this.fileNameList);
+                    this.onFileChange.emit(this.fileUrlList);
                 });
         }
     }
@@ -58,7 +58,7 @@ export class FileUploadComponent {
                 alert("删除成功!");
                 this.fileUrlList=this.fileUrlList.filter(p=> p!=fileUrl);
                 this.fileNameList=this.fileNameList.filter(p=> p!=fileUrl);
-                this.onDeleteFile.emit(this.fileNameList);
+                this.onDeleteFile.emit(this.fileUrlList);
             }
         })
     }

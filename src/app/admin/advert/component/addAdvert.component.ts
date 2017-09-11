@@ -36,10 +36,11 @@ export class AddAdvertComponent implements OnInit {
                 this.endDate = info.endDate;
                 if(info.imageSrc!=""){
                     //设置图片显示的路径，不同的服务器路径不一样
-                    info.imageSrc.split(",").forEach(fileName => {
-                        this.fileUrlList.push(this.advertService.fileSrc+fileName);
-                    });
-                    info.imageSrc.split(",");
+                    // info.imageSrc.split(",").forEach(fileName => {
+                    //     this.fileUrlList.push(this.advertService.fileSrc+fileName);
+                    // });
+                    
+                    this.fileUrlList=info.imageSrc.split(",");
                 }
                 this.advertForm.setValue(info);
             })
