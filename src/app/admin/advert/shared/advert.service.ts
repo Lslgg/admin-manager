@@ -34,6 +34,7 @@ export class AdvertService {
         dbInfo.set("title", advert.title);
         dbInfo.set("type", advert.type);
         dbInfo.set("imageSrc", advert.imageSrc);
+        dbInfo.set("activity", parseInt(advert.activity.toString()));
         dbInfo.set("declare", advert.declare);
         dbInfo.set("startDate", new Date(advert.startDate));
         dbInfo.set("endDate", new Date(advert.endDate));

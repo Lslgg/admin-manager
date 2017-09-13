@@ -35,11 +35,6 @@ export class AddAdvertComponent implements OnInit {
                 this.startDate = info.startDate;
                 this.endDate = info.endDate;
                 if(info.imageSrc!=""){
-                    //设置图片显示的路径，不同的服务器路径不一样
-                    // info.imageSrc.split(",").forEach(fileName => {
-                    //     this.fileUrlList.push(this.advertService.fileSrc+fileName);
-                    // });
-                    
                     this.fileUrlList=info.imageSrc.split(",");
                 }
                 this.advertForm.setValue(info);
@@ -50,11 +45,11 @@ export class AddAdvertComponent implements OnInit {
     ngOnInit() { }
 
     createForm() {
-        var info = new Advert();
         this.advertForm = this.fb.group({
             id: [''],
             title: ['', Validators.required],
             type: ['', Validators.required],
+            activity: [3, Validators.required],
             imageSrc: [''],
             declare: [''],
             startDate: [this.startDate],

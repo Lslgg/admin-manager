@@ -6,6 +6,9 @@
         <form-item [name]="'type'" [title]="'类型'" [type]="'select'" [dataList]="typeList">
             <form-validator [type]="'required'" [title]="'请选择类型'"></form-validator>
         </form-item>
+        <form-item [name]="'activity'" [title]="'活动'">
+            <form-validator [type]="'required'" [title]="'请输入活动'"></form-validator>
+        </form-item>
         <form-item [name]="'imageSrc'" [title]="'图片'" [type]="'file'" [fileUrlList]="fileUrlList">
             <form-validator [type]="'required'" [title]="'请选择上传图片'"></form-validator>
         </form-item>
