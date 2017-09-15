@@ -8,7 +8,7 @@ export class LoginService {
     }
 
     login(account: string, pwd: string): Promise<boolean> {
-        var promise = new Promise((resolve, reject) => {
+        var promise = new Promise<boolean>((resolve, reject) => {
             this.Parse.Parse.User.logIn(account, pwd, {
                 success:  (user)=>  resolve(true),
                 error: (user, error) => reject(false)

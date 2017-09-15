@@ -7,13 +7,9 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 // Routing Module
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { HomeModule } from './home/home.module';
-import { AdminModule } from './admin/admin.module';
-import { LoginComponent } from './admin/login/login.component';
 
 //git 的项目请用
 //import { ParserManager } from './common/ParserManager';
-
 import { ParserManager } from './common/Parser';
 import { CommonHttpApi } from './common/CommonHttpApi';
 import { AuthGuard } from './admin/common/server/auth-guard.service';
@@ -25,18 +21,15 @@ import { AuthGuard } from './admin/common/server/auth-guard.service';
     BrowserAnimationsModule,
     DatepickerModule,
     AppRoutingModule,
-    AdminModule,
-    HomeModule
   ],
   declarations: [
     AppComponent,
-    LoginComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: 'parseManager', useClass: ParserManager },
     { provide: 'commonApi', useClass: CommonHttpApi },
-    AuthGuard
+    
   ],
   bootstrap: [AppComponent]
 })

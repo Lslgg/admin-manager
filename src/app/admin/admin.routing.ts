@@ -11,42 +11,45 @@ import { SystemRoutes, SystemComponentList } from './system/system.routing';
 import { PayLogRoutes, PayLogComponentList } from './payLog/payLog.routing';
 import { DealerRoutes, DealerComponentList } from './dealer/dealer.routing';
 import { AdvertRoutes, AdvertComponentList } from './advert/advert.routing';
+import { NotFindPageRoutes, NotFindPageComponentList } from '../component/404/notFindPage.routing';
+import { AuthGuard } from './common/server/auth-guard.service';
 
+import { AdminComponent } from './admin.component';
 
-import { NotFindPageComponent, NotPowerComponent } from '../component/404';
-
-
-export var routeList: Routes = [];
+var routes:Routes=[];
 
 //首页
-routeList = routeList.concat(IndexRoutes);
+routes = routes.concat(IndexRoutes);
 //用户管理
-routeList = routeList.concat(UserRoutes);
+routes = routes.concat(UserRoutes);
 //角色管理
-routeList = routeList.concat(RoleRoutes);
+routes = routes.concat(RoleRoutes);
 //菜单管理
-routeList = routeList.concat(MenuRoutes);
+routes = routes.concat(MenuRoutes);
 //权限管理
-routeList = routeList.concat(PowerRoutes);
+routes = routes.concat(PowerRoutes);
 //玩家充值管理
-routeList = routeList.concat(PlayerRoutes);
+routes = routes.concat(PlayerRoutes);
 //房卡管理
-routeList = routeList.concat(CardRoutes);
+routes = routes.concat(CardRoutes);
 //系统管理
-routeList = routeList.concat(SystemRoutes);
+routes = routes.concat(SystemRoutes);
 //充值统计
-routeList = routeList.concat(PayLogRoutes);
+routes = routes.concat(PayLogRoutes);
 //群主管理
-routeList = routeList.concat(DealerRoutes);
+routes = routes.concat(DealerRoutes);
 //群主管理
-routeList = routeList.concat(AdvertRoutes);
+routes = routes.concat(AdvertRoutes);
+//错误页面
+routes = routes.concat(NotFindPageRoutes);
 
-routeList = routeList.concat([
-  { path: 'notPower', component: NotPowerComponent, data: { title: '没有权限', module: 'notPower', power: "notPower" } },
-  { path: '**', component: NotFindPageComponent, data: { title: '404', module: '404', power: "SHOW" } },
-
-]);
-
+export var routeList: Routes = [
+  {
+    path: '', canActivateChild: [AuthGuard],
+    component: AdminComponent, data: { title: '后台管理' },
+    children: routes
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routeList)],
@@ -66,8 +69,7 @@ export const ComponentList = [
   PlayerComponentList,
   CardComponentList,
   SystemComponentList,
-  NotFindPageComponent,
-  NotPowerComponent,
+  NotFindPageComponentList,
   PayLogComponentList,
   DealerComponentList,
   AdvertComponentList

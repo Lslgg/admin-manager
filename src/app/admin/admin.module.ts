@@ -5,14 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Jsonp, URLSearchParams } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CommonModule as SystemCommonModule } from '@angular/common';
+import { AuthGuard } from './common/server/auth-guard.service';
 
 //third
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DatepickerModule } from 'angular2-material-datepicker';
 //admin
-import { HeaderComponent, FooterComponent, SidebarComponent } from './layouts';
 import { AdminComponent } from './admin.component';
+import { HeaderComponent, FooterComponent, SidebarComponent } from './layouts';
 import { AdminRoutingModule, ComponentList } from './admin.routing';
 
 //admin common template
@@ -68,8 +69,9 @@ let directive=[
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: HashLocationStrategy,
     },
+    AuthGuard
   ],
   bootstrap: [
     AdminComponent

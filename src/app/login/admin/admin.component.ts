@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './shared/login.service';
+import { LoginService } from '../shared/login.service';
 
 @Component({
-    selector: 'admin-login',
-    templateUrl: 'login.html',
+    selector: 'login-admin',
+    templateUrl: 'admin.html',
     providers: [LoginService ]
 })
 
-export class LoginComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
     constructor(private loginService: LoginService,
         private router: Router) {
