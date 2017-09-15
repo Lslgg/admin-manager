@@ -8,21 +8,15 @@ export class DealerService {
 
 	parseServer: ParserServer;
 
-	util: any;
-
 	constructor( @Inject("commonApi") commonApi, @Inject("parseManager") parse) {
 		this.api = commonApi;
 		this.parseServer = parse;
-		this.util = require('util');
 	}
 
 	getList(pageIndex: number, pageSize: number, dealer:
 		Dealer = new Dealer()): Promise<{ list: Array<Dealer>, count: number }> {
 		let promise = new Promise<{ list: Array<Dealer>, count: number }>((resolve, reject) => {
-
-			var queryStr = this.util.format('page=%d&pageIndex=%d&name=%s&code=%s'
-				, pageIndex, pageSize, dealer.Name, dealer.Code);
-
+			var queryStr=`page=${pageIndex}&pageIndex=${pageSize}&name=${dealer.Name}&code=${dealer.Code}`;
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.DEALER_LIST, query: queryStr })
 				.then(result => {
@@ -59,7 +53,7 @@ export class DealerService {
 
 	update(dealer: Dealer): Promise<boolean> {
 		let promise = new Promise<boolean>((resolve, reject) => {
-			var queryStr: string = this.util.format('id=%s&name=%s&code=%s', dealer.Id, dealer.Name, dealer.Code);
+			var queryStr=`id=${dealer.Id}&name=${dealer.Name}&code=${dealer.Code}`;
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.DEALER_UP, query: queryStr })
 				.then(result => {
@@ -75,7 +69,7 @@ export class DealerService {
 
 	addDealer(dealer: Dealer): Promise<boolean> {
 		let promise = new Promise<boolean>((resolve, reject) => {
-			var queryStr: string = this.util.format('name=%s&code=%s', dealer.Name, dealer.Code);
+			var queryStr=`name=${dealer.Name}&code=${dealer.Code}`;
 			this.parseServer.Parse.Cloud.run(this.api.GMAPI,
 				{ pathname: this.api.DEALER_ADD, query: queryStr })
 				.then(result => {
